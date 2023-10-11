@@ -6,3 +6,7 @@
     background: url(/assets/images/machenike-heroSVG.svg) no-repeat center center/ cover;
     height: 100vh;
 }
+
+#footer {
+    background-color: rgb(199, 199, 199);
+}
