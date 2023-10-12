@@ -1,12 +1,91 @@
-.nav-item .nav-link {
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+
+/* NAVBAR */
+.navbar-brand img {
+    width: 70px;
+}
+
+.navbar-brand span {
+    font-family: "Black Ops One", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.navbar-toggler i {
+    font-size: 2rem;
+}
+
+.nav-item .nav-link,
+.dropdown .nav-link {
     color: white;
 }
 
+.shop .nav-button i {
+    font-size: 1rem;
+}
+
+
+/* HERO */
 #hero {
     background: url(/assets/images/machenike-heroSVG.svg) no-repeat center center/ cover;
     height: 100vh;
 }
 
+.grid-row-hero {
+    height: 100vh;
+}
+
+.grid-row-hero h1 span {
+    font-family: "Black Ops One", Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3rem;
+}
+
+
+/* FEATURES */
+
+#overall-features .feature-logo .feature-brand img {
+    width: 70px;
+}
+
+#overall-features .feature-logo .feature-brand span {
+    font-family: "Black Ops One", Arial, Helvetica, sans-serif;
+    color: #0DCAF0;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+}
+
+#overall-features .feature-logo p {
+    color: #0DCAF0;
+    text-transform: uppercase;
+    font-family: "Black Ops One", Arial, Helvetica, sans-serif;
+    letter-spacing: .5rem;
+}
+
+
+/* Hottest Laptops */
+#hottest-laptops {
+    height: 100vh;
+}
+#hottest-laptops .card {
+    cursor: pointer;
+}
+
+#hottest-laptops .card:hover .card-body p {
+    text-decoration: underline;
+}
+
+#hottest-laptops #hiddenRow {
+    display: none;
+}
 #footer {
     background-color: rgb(199, 199, 199);
+}
+
+
+/* Media Queries */
+@media only screen and (min-width: 320px) {
+    #hottest-laptops {
+        height: auto;
+    }
 }

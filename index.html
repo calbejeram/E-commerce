@@ -15,10 +15,12 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-secondary bg-opacity-50 position-fixed z-1 w-100">
             <div class="container">
-                <img src="../assets/images/logobrand.svg" alt="Machenike Logo" width="70px">
-                <a class="navbar-brand text-info fw-bold" href="#">Machenike</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand text-info fw-bold" href="#">
+                    <img src="../assets/images/machenike-logo.svg" alt="Machenike Logo">
+                    <span>Machenike</span>
+                </a>
+              <button class="btn navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white"></i>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-0 ms-lg-5">
@@ -26,10 +28,9 @@
                     <a class="nav-link" href="#">Home</a>
                   </li>
                   <div class="dropdown">
-                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Overview
                     </a>
-                  
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#overlall-features">Features</a></li>
                       <li><a class="dropdown-item" href="#hottest-laptops">Hottest Laptops</a></li>
@@ -38,10 +39,9 @@
                     </ul>
                   </div>
                   <div class="dropdown">
-                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Products
                     </a>
-                  
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Laptops</a></li>
                       <li><a class="dropdown-item" href="#">Monitors</a></li>
@@ -58,27 +58,29 @@
                     <a class="nav-link" href="#">Contact Us</a>
                   </li>
                   <div class="shop d-block d-lg-none">
-                    <button class="btn bg-white bg-opacity-25 rounded-circle me-3"><i class="bi bi-search text-white" style="font-size: 1.5rem;"></i></button>
-                    <button class="btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white" style="font-size: 1.5rem;"></i></button>
+                    <button class="nav-button btn bg-white bg-opacity-25 rounded-circle me-3"><i class="bi bi-search text-white"></i></button>
+                    <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
                   </div> 
                 </ul>
               </div>
               <div class="shop d-none d-lg-block">
-                <button class="btn bg-white bg-opacity-25 rounded-circle me-3"><i class="bi bi-search text-white" style="font-size: 1.5rem;"></i></button>
-                <button class="btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white" style="font-size: 1.5rem;"></i></button>
+                <button class="nav-button btn bg-white bg-opacity-25 rounded-circle me-3"><i class="bi bi-search text-white"></i></button>
+                <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
               </div>
             </div>
           </nav>
 
           <section id="hero">
               <div class="container">
-                    <div class="row d-flex align-items-center justify-content-start" style="height: 100vh;">
-                        <div class="col-12 col-lg-7">
-                            <h1 class="display-1 fw-bold text-white m-0">Game with Machenike</h1>
-                            <p class="text-white lead">Play at your peak with the highest performance gaming equipment from Machenike.</p>
-                            <a href="" class="btn btn-info fw-bold btn-lg">Shop now</a>
-                        </div>
+                <div class="row grid-row-hero d-flex align-items-center justify-content-start">
+                    <div class="col-12 col-lg-7">
+                        <h1 class="display-1 fw-bold text-info m-0 text-uppercase">
+                            <span>Game with Machenike</span>
+                        </h1>
+                        <p class="lead text-white">Play at your peak with the highest performance gaming equipment from Machenike.</p>
+                        <a href="#" class="btn btn-info fw-bold btn-lg">Shop now</a>
                     </div>
+                </div>
               </div>
           </section>
     </header>
@@ -87,75 +89,118 @@
     <main>
 
         <!-- Features -->
-        <section id="overlall-features" class="my-5">
+        <section id="overall-features" class="my-5">
             <div class="container">
-                <div class="brand-logo d-flex align-items-center justify-content-center my-5">
-                    <img src="https://global.machenike.com/cdn/shop/files/logo_l_180x.png?v=1636374984" alt="">
+                <div class="feature-logo d-flex flex-column align-items-center justify-content-center my-5">
+                    <div class="feature-brand d-flex align-items-center justify-content-center flex-row">
+                        <img src="../assets/images/machenike-logo.svg" alt="Machenike Logo">
+                        <span class="lead">Machenike</span>
+                    </div>
+                    <p class="lead text-center">As cool as you are</p>
                 </div>
                 <div class="row text-center">
-                    <div class="col-6 col-lg-3 bg-info p-3 border text-white">
+                    <div class="col-6 col-lg-3 bg-info p-3 border">
                         <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/in-transit--v1.png" alt="in-transit--v1"/>
                         <h3>Free Delivery</h3>
-                        <p>On all orders</p>
+                        <p class="lead">On all orders</p>
                     </div>
-                    <div class="col-6 col-lg-3 bg-info p-3 border text-white">
+                    <div class="col-6 col-lg-3 bg-info p-3 border">
                         <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/security-checked.png" alt="security-checked"/>
                         <h3>Warranty</h3>
-                        <p>Register Product</p>
+                        <p class="lead">Register Product</p>
                     </div>
-                    <div class="col-6 col-lg-3 bg-info p-3 border text-white">
+                    <div class="col-6 col-lg-3 bg-info p-3 border">
                         <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/card-in-use.png" alt="card-in-use"/>
                         <h3>Payment</h3>
-                        <p>Secured System</p>
+                        <p class="lead">Secured System</p>
                     </div>
-                    <div class="col-6 col-lg-3 bg-info p-3 border text-white">
+                    <div class="col-6 col-lg-3 bg-info p-3 border">
                         <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/online-payment-.png" alt="online-payment-"/>
                         <h3>Online Payment</h3>
-                        <p>Credit/Debit Card etc.</p>
+                        <p class="lead">Credit/Debit Card etc.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Hottest Laptops -->
-        <section id="hottest-laptops">
+        <section id="hottest-laptops" class="d-flex align-items-center">
             <div class="container">
                 <div class="hottest-laptops my-5 text-center text-lg-start">
-                    <h1>Hottest Laptops</h1>
+                    <h2 class="display-3">Hottest Laptops</h2>
+                    <p class="lead">Sleek, Fast, and Stylish: Meet the Hottest Laptops on the Market!</p>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-12 col-lg-3 my-2">
-                        <div class="card">
-                            <img src="https://global.machenike.com/cdn/shop/products/T58-V_533x.png?v=1639032935" class="card-img-top" alt="...">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/T58-V_533x.png?v=1639032935" class="card-img-top" alt="Machenike Laptops">
                             <div class="card-body">
                               <p class="card-text">Machenike T58 Gen 10 Intel (15.6”) Gaming Laptop *Grey</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 my-2">
-                        <div class="card">
-                            <img src="https://global.machenike.com/cdn/shop/products/1_7fb675bf-0371-40a8-bf2d-e708f404349d_533x.png?v=1638943571" class="card-img-top" alt="...">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/1_7fb675bf-0371-40a8-bf2d-e708f404349d_533x.png?v=1638943571" class="card-img-top" alt="Machenike Laptops">
                             <div class="card-body">
                               <p class="card-text">Machenike F117-FP Gen 11 Intel (17.3”) Gaming Laptop</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 my-2">
-                        <div class="card">
-                            <img src="https://global.machenike.com/cdn/shop/products/800X800-__0005_0_81ad159c-adfe-4b2d-8f96-82ecc149348f_533x.png?v=1674032716" class="card-img-top" alt="...">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/800X800-__0005_0_81ad159c-adfe-4b2d-8f96-82ecc149348f_533x.png?v=1674032716" class="card-img-top" alt="Machenike Laptops">
                             <div class="card-body">
                               <p class="card-text">Machenike L15C Gen 12 Intel (15.6") Gaming Laptop</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 my-2">
-                        <div class="card">
-                            <img src="https://global.machenike.com/cdn/shop/products/800X800_533x.png?v=1645010751" class="card-img-top" alt="...">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/800X800_533x.png?v=1645010751" class="card-img-top" alt="Machenike Laptops">
                             <div class="card-body">
                               <p class="card-text">Machenike S15 Gen 12 Intel (15.6”) Gaming Laptop</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Hidden Row -->
+                <div id="hiddenRow" class="row mb-4">
+                    <div class="col-12 col-lg-3 my-2">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/3_533x.png?v=1646361566" class="card-img-top" alt="Machenike Laptops">
+                            <div class="card-body">
+                              <p class="card-text">Machenike S17 Gen 12 Intel (17.3”) Gaming Laptop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/9_0008_1_533x.png?v=1636718872" class="card-img-top" alt="Machenike Laptops">
+                            <div class="card-body">
+                              <p class="card-text">Machenike T58-VA Gen 11 Intel (15.6”) Gaming Laptop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/15__0014_9_9c330cad-1835-4e4f-867f-ae45f4056b04_533x.png?v=1665395084" class="card-img-top" alt="Machenike Laptops">
+                            <div class="card-body">
+                              <p class="card-text">Machcreator A Gen 4 AMD (15.6”) Laptop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/products/2_13a6595c-dce2-4bf4-b7ce-a886f2c4c859_533x.png?v=1637752690" class="card-img-top" alt="Machenike Laptops">
+                            <div class="card-body">
+                              <p class="card-text">Machenike F117-7Plus / L17 Gen 11 Intel (17.3”) Gaming Laptop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-all-btn d-flex align-items-center justify-content-center">
+                    <button id="showBtn" class="btn btn-info">View All</button>
                 </div>
             </div>
         </section>
@@ -164,7 +209,8 @@
         <section id="product-series">
             <div class="container">
                 <div class="product-series my-5 text-center text-lg-start">
-                    <h1>Product Series</h1>
+                    <h2 class="display-3">Product Series</h2>
+                    <p class="lead">Elevate Your Experience: Discover our Product Series Today!</p>
                 </div>
                 <div class="row mb-0 mb-lg-4">
                     <div class="col-12 col-lg-4 my-2 my-lg-0">
@@ -314,6 +360,6 @@
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="./js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
