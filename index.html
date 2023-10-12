@@ -8,11 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="icon" href="./assets/images/machenike-logo.svg" type="image/x-icon">
     <title>Machenike</title>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary rounded-2">
     <!-- Header -->
-    <header>
+    <header id="hero-scroll">
         <nav class="navbar navbar-expand-lg position-fixed z-1 w-100" id="navbar">
             <div class="container">
                 <a class="navbar-brand text-info fw-bold" href="#">
@@ -23,25 +24,23 @@
                 <i class="bi bi-list text-white"></i>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-0 ms-lg-5">
+                <ul class="nav ms-0 ms-lg-5 nav-pills d-flex flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#hero-scroll">Home</a>
                   </li>
-                  <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Overview
-                    </a>
+                  <!-- Dropdown 1 -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Overview</a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#overlall-features">Features</a></li>
+                      <li><a class="dropdown-item" href="#features">Features</a></li>
                       <li><a class="dropdown-item" href="#hottest-laptops">Hottest Laptops</a></li>
                       <li><a class="dropdown-item" href="#product-series">Product Series</a></li>
                       <li><a class="dropdown-item" href="#branding-video">Branding Video</a></li>
                     </ul>
-                  </div>
-                  <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Products
-                    </a>
+                  </li>
+                  <!-- Dropdown 2 -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Products</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Laptops</a></li>
                       <li><a class="dropdown-item" href="#">Monitors</a></li>
@@ -50,7 +49,7 @@
                       <li><a class="dropdown-item" href="#">Mice</a></li>
                       <li><a class="dropdown-item" href="#">Keyboards</a></li>
                     </ul>
-                  </div>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                   </li>
@@ -89,8 +88,8 @@
     <main>
 
         <!-- Features -->
-        <section id="overall-features" class="my-5">
-            <div class="container">
+        <section id="overall-features">
+            <div class="container" id="features">
                 <div class="feature-logo d-flex flex-column align-items-center justify-content-center my-5">
                     <div class="feature-brand d-flex align-items-center justify-content-center flex-row">
                         <img src="../assets/images/machenike-logo.svg" alt="Machenike Logo">
@@ -125,7 +124,7 @@
 
         <!-- Hottest Laptops -->
         <section id="hottest-laptops" class="d-flex align-items-center">
-            <div class="container">
+            <div class="container" >
                 <div class="hottest-laptops my-5 text-center text-lg-start">
                     <h2 class="display-3">Hottest Laptops</h2>
                     <p class="lead">Sleek, Fast, and Stylish: Meet the Hottest Laptops on the Market!</p>
@@ -211,8 +210,21 @@
                 <div class="product-series my-5 text-center text-lg-start">
                     <h2 class="display-3">Product Series</h2>
                     <p class="lead">Elevate Your Experience: Discover our Product Series Today!</p>
+                    <div class="dropdown product-dropdown">
+                        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                          Products
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" id="laptopProducts">Laptops</a></li>
+                          <li><a class="dropdown-item" id="monitorProducts">Monitors</a></li>
+                          <li><a class="dropdown-item" id="desktopProducts">Desktops</a></li>
+                          <li><a class="dropdown-item" id="accessoriesProducts">Accessories</a></li>
+                          <li><a class="dropdown-item" id="miceProducts">Mice</a></li>
+                          <li><a class="dropdown-item" id="keyboardProducts">Keyboards</a></li>
+                        </ul>
+                      </div>
                 </div>
-                <div class="row mb-0 mb-lg-4">
+                <div class="row laptop-products mb-0 mb-lg-4 d-none">
                     <div class="col-12 col-lg-4 my-2 my-lg-0">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/9_0006_3_535x.png?v=1637060714" class="card-img-top" alt="...">
@@ -224,7 +236,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 my-2 my-lg-0">
+                </div>
+                <!-- Default Product Series -->
+                <div class="row mb-0 mb-lg-4" id="defaultProductSeries">
+                    <div class="col-12 col-lg-4 my-2">
+                        <div class="card bg-secondary bg-opacity-25">
+                            <img src="https://global.machenike.com/cdn/shop/collections/9_0006_3_535x.png?v=1637060714" class="card-img-top" alt="...">
+                            <div class="card-body bg-white bg-opacity-50">
+                                <a class="icon-link text-black fw-bold" href="#">
+                                    Laptops
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 my-2">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/1_1a21bd5b-888d-4e70-81d2-f54f40f3d8df_535x.png?v=1674883892" class="card-img-top" alt="...">
                             <div class="card-body bg-white bg-opacity-50">
@@ -235,7 +261,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 my-2 my-lg-0">
+                    <div class="col-12 col-lg-4 my-2">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/20201109_13968-_1_1_535x.png?v=1680169837" class="card-img-top" alt="...">
                             <div class="card-body bg-white bg-opacity-50">
@@ -246,9 +272,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-lg-4 my-2 my-lg-0">
+                    <div class="col-12 col-lg-4 my-2">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/1_535x.png?v=1680166373" class="card-img-top" alt="...">
                             <div class="card-body bg-white bg-opacity-50">
@@ -259,7 +283,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 my-2 my-lg-0">
+                    <div class="col-12 col-lg-4 my-2">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/1723c26fff302925cae309b7f027739a_535x.png?v=1655376371" class="card-img-top" alt="...">
                             <div class="card-body bg-white bg-opacity-50">
@@ -270,7 +294,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 my-2 my-lg-0">
+                    <div class="col-12 col-lg-4 my-2">
                         <div class="card bg-secondary bg-opacity-25">
                             <img src="https://global.machenike.com/cdn/shop/collections/K7_87-8_535x.png?v=1661587973" class="card-img-top" alt="...">
                             <div class="card-body bg-white bg-opacity-50">
@@ -301,57 +325,60 @@
         <section id="footer" class="mt-5">
             <div class="container p-3">
                 <div class="footer-text my-3">
-                    <h4 class="text-white">For Inquiries, contact MachenikePH at (02) 8-555-2300</h4>
+                    <h4 class="text-black">For Inquiries, contact MachenikePH at (02) 8-555-2300</h4>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-lg-2 my-2 my-lg-0">
-                        <h5 class="text-white">Machenike INC.</h5>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Machenike INC.</h5>
                         <div class="quick-links d-flex text-start text-white flex-column">
-                            <a href="#" class="text-white text-decoration-none">About Machenike Inc.</a>
-                            <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
-                            <a href="#" class="text-white text-decoration-none">Machenike </a>
-                            <a href="#" class="text-white text-decoration-none">Press</a>
-                            <a href="#" class="text-white text-decoration-none">Awards</a>
+                            <a href="#">About Machenike Inc.</a>
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Machenike </a>
+                            <a href="#">Press</a>
+                            <a href="#">Awards</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Support</h5>
+                        <div class="quick-links d-flex text-start text-white flex-column">
+                            <a href="#">Sales Support</a>
+                            <a href="#">Technical Support</a>
+                            <a href="#">Drivers and Manuals</a>
+                            <a href="#">Machenike Community</a>
+                            <a href="#">FAQ</a>
+                            <a href="#">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Account</h5>
+                        <div class="quick-links d-flex text-start text-white flex-column">
+                            <a href="#">My Account</a>
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">My Orders</a>
+                            <a href="#">My Wishlist</a>
+                            <a href="#">Product Registration</a>
                         </div>
                     </div>
                     <div class="col-12 col-lg-2 my-2 my-lg-0">
-                        <h5 class="text-white">Support</h5>
+                        <h5 class="text-black fw-bold">Machenike Online Store</h5>
                         <div class="quick-links d-flex text-start text-white flex-column">
-                            <a href="#" class="text-white text-decoration-none">Sales Support</a>
-                            <a href="#" class="text-white text-decoration-none">Technical Support</a>
-                            <a href="#" class="text-white text-decoration-none">Drivers and Manuals</a>
-                            <a href="#" class="text-white text-decoration-none">Machenike Community</a>
-                            <a href="#" class="text-white text-decoration-none">FAQ</a>
-                            <a href="#" class="text-white text-decoration-none">Contact Us</a>
+                            <a href="#">Terms & Conditions</a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-2 my-2 my-lg-0">
-                        <h5 class="text-white">Account</h5>
-                        <div class="quick-links d-flex text-start text-white flex-column">
-                            <a href="#" class="text-white text-decoration-none">My Account</a>
-                            <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
-                            <a href="#" class="text-white text-decoration-none">My Orders</a>
-                            <a href="#" class="text-white text-decoration-none">My Wishlist</a>
-                            <a href="#" class="text-white text-decoration-none">Product Registration</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-2 my-2 my-lg-0">
-                        <h5 class="text-white">Acer Online Store</h5>
-                        <div class="quick-links d-flex text-start text-white flex-column">
-                            <a href="#" class="text-white text-decoration-none">Terms & Conditions</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-2 my-2 my-lg-0">
-                        <h5 class="text-white">Follow us</h5>
+                    <div class="col-12 col-lg-1 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Follow us</h5>
                         <div class="quick-links d-flex text-start text-white">
-                            <a href="#" class="text-white text-decoration-none pe-3"><i class="bi bi-facebook" style="font-size: 2rem;"></i></a>
-                            <a href="#" class="text-white text-decoration-none pe-3"><i class="bi bi-instagram" style="font-size: 2rem;"></i></a>
-                            <a href="#" class="text-white text-decoration-none pe-3"><i class="bi bi-youtube" style="font-size: 2rem;"></i></a>
+                            <a href="https://facebook.com" target="_blank" class="pe-3"><i class="bi bi-facebook" style="font-size: 2rem;"></i></a>
+                            <a href="https://instagram.com" target="_blank" class="pe-3"><i class="bi bi-instagram" style="font-size: 2rem;"></i></a>
+                            <a href="https://youtube.com" target="_blank" class="pe-3"><i class="bi bi-youtube" style="font-size: 2rem;"></i></a>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <p class="text-white text-center m-0">Allrights reserved @ MachenikePH 2023</p>
+                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+                    <p class="text-black fw-bold text-center m-0">Allrights reserved @ MachenikePH 2023</p>
+                    <img src="./assets/images/machenike-logo.svg" class="brand-logo" alt="Machenike Brand">
+                </div>
             </div>
         </section>
     </footer>

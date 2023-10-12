@@ -21,6 +21,10 @@
     color: white;
 }
 
+.nav-item .nav-link:visited {
+    color: white;
+}
+
 .shop .nav-button i {
     font-size: 1rem;
 }
@@ -43,7 +47,6 @@
 
 
 /* FEATURES */
-
 #overall-features .feature-logo .feature-brand img {
     width: 70px;
 }
@@ -71,6 +74,10 @@
     cursor: pointer;
 }
 
+#hottest-laptops .card img {
+    filter: drop-shadow(0 0 30px rgb(0, 238, 255));
+}
+
 #hottest-laptops .card:hover .card-body p {
     text-decoration: underline;
 }
@@ -78,9 +85,43 @@
 #hottest-laptops #hiddenRow {
     display: none;
 }
+
+
+/* Product Series */
+#product-series .card img {
+    filter: drop-shadow(0 0 30px rgb(0, 238, 255));
+}
+
+#product-series .product-dropdown ul li a:hover {
+    cursor: pointer;
+}
+
+
+/* FOOTER */
 #footer {
     background-color: rgb(199, 199, 199);
 }
+
+#footer .quick-links a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+#footer .quick-links a:hover {
+    text-decoration: underline;
+    color: rgb(0, 153, 255);
+}
+
+#footer .brand-logo {
+    width: 30px;
+    margin: 0 10px;
+}
+
+
+
+
+
+
 
 
 /* Media Queries */
