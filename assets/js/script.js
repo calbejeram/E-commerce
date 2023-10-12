@@ -2,11 +2,10 @@
 const showBtn = document.getElementById("showBtn");
 const navbar = document.getElementById("navbar");
 const showRow = document.querySelector("#hiddenRow");
-const products = document.querySelectorAll("#laptopProducts, #monitorProducts, #desktopProducts, #accessoriesProducts, #miceProducts, #keyboardProducts");
-const defaultProductSeries = document.getElementById("defaultProductSeries");
-const productSeriesTitle = document.getElementById("productSeriesTitle");
-const productSeriesSelect = document.getElementById("productSeriesSelect");
-const productSeriesSelected = document.getElementById("productSeriesSelected");
+const products = document.querySelectorAll("#laptopProducts, #monitorProducts, #desktopProducts, #accessoriesProducts, #miceProducts, #keyboardProducts, #productSeriesSelect");
+const navbarLinks = document.querySelectorAll(".navbar .nav .navbar-link");
+const navbarBtnToggler = document.getElementById("navbarButtonToggler");
+const navbarNav = document.getElementById("navbarNav");
 
 // FUNCTIONS
 
@@ -32,23 +31,48 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// Products
-products.forEach((product) => {
-    product.addEventListener("click", () => {
-        defaultProductSeries.classList.add("d-none")
-        // defaultProductSeries.innerHTML = `<h1>${product.innerHTML}</h1>`;
-        productSeriesTitle.innerText = product.innerHTML;
-        productSeriesSelected.innerHTML = product.innerHTML;
-        
-        // if (product.classList.contains("active")) {
-        //     product.classList.remove("active")
-        // } else {
-        //     product.classList.add("active")
-        // }
-    })
+// Navbar Links
+navbarLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        if (navbarBtnToggler.classList.contains("collapsed")) {
+            navbarBtnToggler.classList.remove("collapsed");
+        } else {
+            navbarBtnToggler.classList.add("collapsed");
+        }
+
+        if (navbarNav.classList.contains("show")) {
+            navbarNav.classList.remove("show");
+        } else {
+            navbarNav.classList.add("show");
+        }
+    });
 });
 
-productSeriesSelect.addEventListener("click", () => {
-    defaultProductSeries.classList.remove("d-none")
-    productSeriesTitle.innerText = "Product Series";
-});
+// Products
+// products.forEach((product) => {
+//     product.addEventListener("click", () => {
+//         defaultProductSeries.classList.add("d-none")
+//         productSeriesTitle.innerText = product.innerHTML;
+//         productSeriesSelected.innerHTML = product.innerHTML;
+//     });
+// });
+
+// function setActive(id) {
+//     products.forEach(product => {
+//         if (product === id) {
+//             product.classList.add("active");
+//         } else {
+//             product.classList.remove("active");
+//         }
+//     });
+// };
+
+// products.forEach(product => {
+//     product.addEventListener("click", () => {
+//         setActive(product)
+//     });
+// });
+
+// productSeriesSelect.addEventListener("click", () => {
+//     defaultProductSeries.classList.remove("d-none")
+// });
