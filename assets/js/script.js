@@ -4,6 +4,9 @@ const navbar = document.getElementById("navbar");
 const showRow = document.querySelector("#hiddenRow");
 const products = document.querySelectorAll("#laptopProducts, #monitorProducts, #desktopProducts, #accessoriesProducts, #miceProducts, #keyboardProducts");
 const defaultProductSeries = document.getElementById("defaultProductSeries");
+const productSeriesTitle = document.getElementById("productSeriesTitle");
+const productSeriesSelect = document.getElementById("productSeriesSelect");
+const productSeriesSelected = document.getElementById("productSeriesSelected");
 
 // FUNCTIONS
 
@@ -33,6 +36,19 @@ window.addEventListener("scroll", () => {
 products.forEach((product) => {
     product.addEventListener("click", () => {
         defaultProductSeries.classList.add("d-none")
-        defaultProductSeries.innerHTML = `<h1>${product.innerHTML}</h1>`;
+        // defaultProductSeries.innerHTML = `<h1>${product.innerHTML}</h1>`;
+        productSeriesTitle.innerText = product.innerHTML;
+        productSeriesSelected.innerHTML = product.innerHTML;
+        
+        // if (product.classList.contains("active")) {
+        //     product.classList.remove("active")
+        // } else {
+        //     product.classList.add("active")
+        // }
     })
-})
+});
+
+productSeriesSelect.addEventListener("click", () => {
+    defaultProductSeries.classList.remove("d-none")
+    productSeriesTitle.innerText = "Product Series";
+});
