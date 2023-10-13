@@ -1,3 +1,4 @@
+
 // VARIABLES
 const showBtn = document.getElementById("showBtn");
 const navbar = document.getElementById("navbar");

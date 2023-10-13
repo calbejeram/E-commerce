@@ -30,6 +30,10 @@
     color: white;
 }
 
+.shop .nav-button {
+    margin: 0 5px;
+}
+
 .shop .nav-button i {
     font-size: 1rem;
 }
