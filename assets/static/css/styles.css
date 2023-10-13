@@ -41,7 +41,7 @@
 
 /* HERO */
 #hero {
-    background: url(/assets/images/machenike-heroSVG.svg) no-repeat center center/ cover;
+    background: url(/assets/static/images/machenike-heroSVG.svg) no-repeat center center/ cover;
     height: 100vh;
 }
 
@@ -101,6 +101,24 @@
 #hottest-laptops {
     height: 100vh;
 }
+#hottest-laptops #hottestProducts {
+    height: 75vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#hottest-laptops #hottestProducts::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: linear-gradient(transparent 10%, #F8F9FA);
+    height: 150px;
+}
+
+
+
 #hottest-laptops .card {
     cursor: pointer;
 }
