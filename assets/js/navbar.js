@@ -6,17 +6,13 @@ const navbarNav = document.getElementById("navbarNav");
 const showBtnHottestProduct = document.getElementById("showBtn");
 const hottestProductsContainerr = document.querySelector("#hottestProducts");
 
+
 // FUNCTIONS
 // Navbar Scroll
 window.addEventListener("scroll", () => {
     let scroll = window.scrollY;
-    console.log(scroll)
-    
-    if (scroll > 80) {
-        navbar.classList.add("bg-secondary");
-    } else {
-        navbar.classList.remove("bg-secondary");
-    }
+
+    scroll > 80 ? navbar.classList.add("bg-secondary") : navbar.classList.remove("bg-secondary");
 
     if (scroll <= 1100) {
         showBtnHottestProduct.innerText = "View All";
@@ -25,6 +21,7 @@ window.addEventListener("scroll", () => {
         hottestProductsContainerr.style.position = "relative";
     }
 });
+
 
 // Navbar Links
 navbarLinks.forEach(link => {
