@@ -61,8 +61,8 @@
                   </li>
                   <div class="shop d-block d-lg-none mb-2 mb-lg-0">
                     <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
-                    <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
-                    <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
+                    <button id="cartButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
+                    <button id="userButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
                   </div>
                   <div class="search-box d-block d-lg-none">
                     <input id="searchBoxInputMobile" class="form-control d-none" type="text" placeholder="Search Keyword Here">
@@ -74,8 +74,12 @@
                 </div>
               <div class="shop d-none d-lg-block">
                 <button id="searchButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
-                <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white" title="Cart"></i></button>
-                <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
+                <button id="cartButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white" title="Cart"></i></button>
+                <!-- CART MODAL -->
+                <div class="cart-modal d-none">
+                    <!-- Cart Modal -->
+                </div>
+                <button id="userButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
               </div>
             </div>
           </nav>
@@ -196,7 +200,7 @@
                     </div>
                     <div class="col-12 col-lg-3 my-2 my-lg-0">
                         <h5 class="text-black fw-bold">Accepted Payments</h5>
-                        <div class="quick-links d-flex">
+                        <div class="quick-links d-flex flex-wrap">
                             <a href="#"><img width="48" height="48" src="https://img.icons8.com/color/48/mastercard.png" alt="mastercard" title="Mastercard"/></a>
                             <a href="#"><img width="48" height="48" src="https://img.icons8.com/color/48/visa.png" alt="visa" title="Visa"/></a>
                             <a href="#"><img width="48" height="48" src="https://img.icons8.com/fluency/48/paypal.png" alt="paypal" title="Paypal"/></a>

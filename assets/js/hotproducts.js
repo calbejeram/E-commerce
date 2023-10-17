@@ -47,13 +47,13 @@ const hotProducts = [
 // FUNCTIONS
 // View hottest laptops
 showBtn.addEventListener("click", () => {
-    if (showBtn.innerHTML === "View All") {
-        showBtn.innerText = "Hide";
+    if (showBtn.innerHTML === "See More") {
+        showBtn.innerText = "See Less";
         hottestProductsContainer.style.height = "auto";
         hottestProductsContainer.style.overflow = "";
         hottestProductsContainer.style.position = "static";
     } else {
-        showBtn.innerText = "View All";
+        showBtn.innerText = "See More";
         hottestProductsContainer.style.height = "75vh";
         hottestProductsContainer.style.overflow = "hidden";
         hottestProductsContainer.style.position = "relative";
