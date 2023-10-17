@@ -59,15 +59,21 @@
                   <li class="nav-item">
                     <a class="nav-link navbar-link" href="#">Contact Us</a>
                   </li>
-                  <div class="shop d-block d-lg-none mb-2">
-                    <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
+                  <div class="shop d-block d-lg-none mb-2 mb-lg-0">
+                    <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
                     <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
                     <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
-                  </div> 
+                  </div>
+                  <div class="search-box d-block d-lg-none">
+                    <input id="searchBoxInputMobile" class="form-control d-none" type="text" placeholder="Search Keyword Here">
+                  </div>
                 </ul>
-              </div>
+                </div>
+                <div class="search-box d-none d-lg-flex mb-2 mb-lg-0 me-3">
+                    <input id="searchBoxInputLarge" class="form-control d-none" type="text" placeholder="Search Keyword Here">
+                </div>
               <div class="shop d-none d-lg-block">
-                <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
+                <button id="searchButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
                 <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white" title="Cart"></i></button>
                 <button class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
               </div>
@@ -102,27 +108,8 @@
                     </div>
                     <p class="lead text-center">As cool as you are</p>
                 </div>
-                <div class="row text-center pb-3">
-                    <div class="col-6 col-lg-3 p-3 border border-5">
-                        <img width="48" height="48" src="https://img.icons8.com/fluency/48/delivery.png" alt="delivery"/>
-                        <h3>Free Delivery</h3>
-                        <p class="lead">On all orders</p>
-                    </div>
-                    <div class="col-6 col-lg-3 p-3 border border-5">
-                        <img width="48" height="48" src="https://img.icons8.com/fluency/48/warranty--v1.png" alt="warranty--v1"/>
-                        <h3>Warranty</h3>
-                        <p class="lead">Register Product</p>
-                    </div>
-                    <div class="col-6 col-lg-3 p-3 border border-5">
-                        <img width="48" height="48" src="https://img.icons8.com/color/48/card-in-use.png" alt="card-in-use"/>
-                        <h3>Payment</h3>
-                        <p class="lead">Secured System</p>
-                    </div>
-                    <div class="col-6 col-lg-3 p-3 border border-5">
-                        <img width="48" height="48" src="https://img.icons8.com/color/48/online-payment-.png" alt="online-payment-"/>
-                        <h3>Online Payment</h3>
-                        <p class="lead">Credit/Debit Card etc.</p>
-                    </div>
+                <div id="featuresContainer" class="row text-center pb-3">
+                    <!-- Features Container -->
                 </div>
             </div>
         </section>
@@ -244,5 +231,6 @@
     <script src="./assets/js/navbar.js"></script>
     <script src="./assets/js/hotproducts.js"></script>
     <script src="./assets/js/productseries.js"></script>
+    <script src="./assets/js/features.js"></script>
 </body>
 </html>

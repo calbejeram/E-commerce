@@ -127,6 +127,10 @@
     filter: drop-shadow(0 0 30px rgb(0, 238, 255));
 }
 
+#hottest-laptops .card .card-body p {
+    font-size: 16px;
+}
+
 #hottest-laptops .card:hover .card-body p {
     text-decoration: underline;
 }
@@ -181,5 +185,9 @@
         background: linear-gradient (135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
+    }
+
+    #hottest-laptops .card .card-body p {
+        font-size: 13px;
     }
 }

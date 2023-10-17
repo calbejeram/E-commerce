@@ -5,6 +5,10 @@ const navbarBtnToggler = document.getElementById("navbarButtonToggler");
 const navbarNav = document.getElementById("navbarNav");
 const showBtnHottestProduct = document.getElementById("showBtn");
 const hottestProductsContainerr = document.querySelector("#hottestProducts");
+const searchButtonMobile = document.getElementById("searchButtonMobile");
+const searchBoxInputMobile = document.getElementById("searchBoxInputMobile");
+const searchButtonLarge = document.getElementById("searchButtonLarge");
+const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 
 
 // FUNCTIONS
@@ -39,3 +43,30 @@ navbarLinks.forEach(link => {
         }
     });
 });
+
+// Search and Cart Button
+searchButtonMobile.addEventListener("click", () => {
+    if (searchBoxInputMobile.classList.contains("d-none")) {
+        searchBoxInputMobile.classList.remove("d-none");
+        searchBoxInputMobile.classList.add("d-block");
+        searchButtonMobile.classList.add("border")
+    } else {
+        searchBoxInputMobile.classList.remove("d-block");
+        searchBoxInputMobile.classList.add("d-none");
+        searchButtonMobile.classList.remove("border");
+        searchBoxInputMobile.value = "";
+    }
+})
+
+searchButtonLarge.addEventListener("click", () => {
+    if (searchBoxInputLarge.classList.contains("d-none")) {
+        searchBoxInputLarge.classList.remove("d-none");
+        searchBoxInputLarge.classList.add("d-block");
+        searchButtonLarge.classList.add("border");
+    } else {
+        searchBoxInputLarge.classList.remove("d-block");
+        searchBoxInputLarge.classList.add("d-none");
+        searchButtonLarge.classList.remove("border");
+        searchBoxInputLarge.value = "";
+    }
+})
