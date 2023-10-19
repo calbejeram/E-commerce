@@ -11,6 +11,15 @@ const searchBoxInputMobile = document.getElementById("searchBoxInputMobile");
 const searchButtonLarge = document.getElementById("searchButtonLarge");
 const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 const cartButtonLarge = document.getElementById("cartButtonLarge");
+const dropDownMenu = document.getElementById("dropDownMenu")
+const dropDownItemLinks = [
+    Laptops,
+    Monitors,
+    Desktops,
+    Accessories,
+    Mice,
+    Keyboards
+]
 
 
 // FUNCTIONS
@@ -63,20 +72,7 @@ buttonsRight.forEach(button => {
     })
 })
 
-// // Search and Cart Button
-// searchButtonMobile.addEventListener("click", () => {
-//     if (searchBoxInputMobile.classList.contains("d-none")) {
-//         searchBoxInputMobile.classList.remove("d-none");
-//         searchBoxInputMobile.classList.add("d-block");
-//         searchButtonMobile.classList.add("border")
-//     } else {
-//         searchBoxInputMobile.classList.remove("d-block");
-//         searchBoxInputMobile.classList.add("d-none");
-//         searchButtonMobile.classList.remove("border");
-//         searchBoxInputMobile.value = "";
-//     }
-// })
-
+// // Search Button
 searchButtonLarge.addEventListener("click", () => {
     if (searchBoxInputLarge.classList.contains("d-none")) {
         searchBoxInputLarge.classList.remove("d-none");
@@ -89,31 +85,28 @@ searchButtonLarge.addEventListener("click", () => {
     }
 });
 
-// cartButtonLarge.addEventListener("click", () => {
-//     const modalContainer = document.createElement("div");
-//     modalContainer.className = "modal fade";
-//     modalContainer.id = "cartModal";
+searchButtonMobile.addEventListener("click", () => {
+    if (searchBoxInputMobile.classList.contains("d-none")) {
+        searchBoxInputMobile.classList.remove("d-none");
+        searchBoxInputMobile.classList.add("d-block");
+    } else {
+        searchBoxInputMobile.classList.remove("d-block");
+        searchBoxInputMobile.classList.add("d-none");
+        searchButtonMobile.className = "nav-button btn bg-white bg-opacity-25 rounded-circle"
+        searchBoxInputMobile.value = "";
+    }
+});
+
+// Drop Down Menu
+dropDownItemLinks.forEach(itemLinks => {
+    let dropDownItem = document.createElement("li");
+    let dropDownLink = document.createElement("a");
+
+    dropDownLink.className = "dropdown-item navbar-link";
+    dropDownLink.href = `./assets/pages/products/${itemLinks.toLowerCase()}.html`
+    dropDownLink.innerHTML = `${itemLinks}`;
+
+    dropDownItem.appendChild(dropDownLink);
     
-//     modalContainer.innerHTML = `
-//     <div class="modal-dialog">
-//     <div class="modal-content">
-//     <div class="modal-header">
-//     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//       </div>
-//       <div class="modal-body">
-//       ...
-//       </div>
-//       <div class="modal-footer">
-//       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-//       <button type="button" class="btn btn-primary">Save changes</button>
-//       </div>
-//       </div>
-//       </div>
-//       `
-//       cartButtonLarge.setAttribute("data-bs-toggle", "modal")
-//       cartButtonLarge.setAttribute("data-bs-target", "#cartModal")
-      
-//     document.querySelector(".cart-modal").appendChild(modalContainer);
-    
-// })
+    dropDownMenu.innerHTML = dropDownItem;
+})
