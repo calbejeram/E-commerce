@@ -11,14 +11,14 @@ const searchBoxInputMobile = document.getElementById("searchBoxInputMobile");
 const searchButtonLarge = document.getElementById("searchButtonLarge");
 const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 const cartButtonLarge = document.getElementById("cartButtonLarge");
-const dropDownMenu = document.getElementById("dropDownMenu")
+const dropDownMenu = document.getElementById("dropDownMenuProducts");
 const dropDownItemLinks = [
-    Laptops,
-    Monitors,
-    Desktops,
-    Accessories,
-    Mice,
-    Keyboards
+    "Laptops",
+    "Monitors",
+    "Desktops",
+    "Accessories",
+    "Mice",
+    "Keyboards"
 ]
 
 
@@ -41,36 +41,23 @@ window.addEventListener("scroll", () => {
 // Navbar Links
 navbarLinks.forEach(link => {
     link.addEventListener("click", () => {
-        if (navbarBtnToggler.classList.contains("collapsed")) {
-            navbarBtnToggler.classList.remove("collapsed");
-        } else {
-            navbarBtnToggler.classList.add("collapsed");
-        }
-
-        if (navbarNav.classList.contains("show")) {
-            navbarNav.classList.remove("show");
-        } else {
-            navbarNav.classList.add("show");
-        }
+        navbarBtnToggler.classList.contains("collapsed") ? navbarBtnToggler.classList.remove("collapsed") : navbarBtnToggler.classList.add("collapsed");
+        navbarNav.classList.contains("show") ? navbarNav.classList.remove("show") : navbarNav.classList.add("show");
     });
 });
 
 
 const setActive = (id) => {
     buttonsRight.forEach(button => {
-        if (button === id) {
-            button.className = "nav-button btn btn-primary rounded-circle";
-        } else {
-            button.className = "nav-button btn bg-white bg-opacity-25 rounded-circle";
-        }
-    })
-}
+        button === id ? button.className = "nav-button btn btn-primary rounded-circle position-relative" : button.className = "nav-button btn bg-white bg-opacity-25 rounded-circle position-relative"
+    });
+};
 
 buttonsRight.forEach(button => {
     button.addEventListener("click", () => {
         setActive(button);
     })
-})
+});
 
 // // Search Button
 searchButtonLarge.addEventListener("click", () => {
@@ -98,15 +85,10 @@ searchButtonMobile.addEventListener("click", () => {
 });
 
 // Drop Down Menu
-dropDownItemLinks.forEach(itemLinks => {
+for (let i = 0; i < dropDownItemLinks.length; i++) {
     let dropDownItem = document.createElement("li");
-    let dropDownLink = document.createElement("a");
+    dropDownItem.innerHTML = `<a class="dropdown-item navbar-link" href="./assets/pages/products/${dropDownItemLinks[i].toLowerCase()}.html">${dropDownItemLinks[i]}</a>`;
 
-    dropDownLink.className = "dropdown-item navbar-link";
-    dropDownLink.href = `./assets/pages/products/${itemLinks.toLowerCase()}.html`
-    dropDownLink.innerHTML = `${itemLinks}`;
-
-    dropDownItem.appendChild(dropDownLink);
-    
-    dropDownMenu.innerHTML = dropDownItem;
-})
+    dropDownMenu.appendChild(dropDownItem);
+    // dropDownItem.id.includes(`${dropDownItemLinks[i].toLowerCase()}`) ? 
+}
