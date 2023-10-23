@@ -11,16 +11,6 @@ const searchBoxInputMobile = document.getElementById("searchBoxInputMobile");
 const searchButtonLarge = document.getElementById("searchButtonLarge");
 const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 const cartButtonLarge = document.getElementById("cartButtonLarge");
-const dropDownMenu = document.getElementById("dropDownMenuProducts");
-const dropDownItemLinks = [
-    "Laptops",
-    "Monitors",
-    "Desktops",
-    "Accessories",
-    "Mice",
-    "Keyboards"
-]
-
 
 // FUNCTIONS
 // Navbar Scroll
@@ -83,12 +73,3 @@ searchButtonMobile.addEventListener("click", () => {
         searchBoxInputMobile.value = "";
     }
 });
-
-// Drop Down Menu
-for (let i = 0; i < dropDownItemLinks.length; i++) {
-    let dropDownItem = document.createElement("li");
-    dropDownItem.innerHTML = `<a class="dropdown-item navbar-link" href="./assets/pages/products/${dropDownItemLinks[i].toLowerCase()}.html">${dropDownItemLinks[i]}</a>`;
-
-    dropDownMenu.appendChild(dropDownItem);
-    // dropDownItem.id.includes(`${dropDownItemLinks[i].toLowerCase()}`) ? 
-}
