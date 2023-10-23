@@ -1,6 +1,6 @@
 // VARIABLE
 const laptopProductContainer = document.getElementById("laptopProductContainer");
-const wishlistBtn = document.getElementById("wishlistBtn");
+const wishListBtns = document.getElementsByClassName("wishListBtn");
 const laptopProducts = [
     {
         laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
@@ -490,10 +490,7 @@ for (let i = 0; i < laptopProducts.length; i++) {
                 </div>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-success">View Details</button>
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input id="wishlistBtn" type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                        <label class="btn border-0" for="btncheck1"><i class="bi bi-heart-fill text-danger"></i></label>
-                    </div>
+                    <button class="btn wishListBtn border-0"><i class="bi bi-heart-fill text-danger"></i></button>
                 </div>
             </div>
         </div>
@@ -501,3 +498,20 @@ for (let i = 0; i < laptopProducts.length; i++) {
 
     laptopProductContainer.appendChild(productLaptopElement);
 };
+
+
+for (let i = 0; i < wishListBtns.length; i++) {
+    wishListBtns[i].addEventListener("click", () => {
+
+        Swal.fire({
+            icon: "success",
+            title: "This item is added to your wishlist",
+            timer: 1500
+        })
+    });
+}
+
+
+
+
+
