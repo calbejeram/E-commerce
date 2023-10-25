@@ -1,20 +1,54 @@
 // VARIABLE
 const laptopProductContainer = document.getElementById("laptopProductContainer");
 const wishListBtns = document.getElementsByClassName("wishListBtn");
+const viewDetails = document.getElementsByClassName("viewDetails");
+const wishListCount = document.getElementById("wishListCount");
+
+const wishLists = localStorage.getItem("ProductWishLists") ? JSON.parse(localStorage.getItem("ProductWishLists")) : []
+wishListCount.innerHTML = wishLists.length;
+
 const laptopProducts = [
     {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
+        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopImgUrl: "https://global.machenike.com/cdn/shop/products/800X800_533x.png?v=1645010751",
+        laptopName: "Machenike S15 Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
+            image1: "https://global.machenike.com/cdn/shop/products/2_09c6791a-3357-4417-9f3a-c304fa0f0cb7.jpg?v=1661590952",
+            image2: "https://global.machenike.com/cdn/shop/products/8e9855b0a6421fb278adf617247d1797.jpg?v=1661590952",
+            image3: "https://global.machenike.com/cdn/shop/products/70c6c52cb4d0a1d47462eec2354edce9.jpg?v=1661590952",
+            image4: "https://global.machenike.com/cdn/shop/products/a2cb639883f89e8dfcd1fbfaf0e73c5f.jpg?v=1661590952",
+            image5: "https://global.machenike.com/cdn/shop/products/b05ff08433aecad2fbecee1eefefb79d.jpg?v=1661590952"
         },
-        laptopPrice: "PHP 65,000.00",
+        laptopPrice: "₱ 65,000.00",
         laptopRating: "5",
         laptopSold: "15",
+        laptopSpecs: {
+            brandName: "Machenike",
+            type: "Laptop",
+            series: "Gaming",
+            modelNumber: "L15",
+            operatingSystem: "Windows 11",
+            cpu: "i9-12900H",
+            gpu: "RTX 3060",
+            memory: "32G RAM + 512G SSD + 2T",
+            graphicsCardModel: " RTX30series",
+            cpuBrandModel: " Intel 12th Gen Processor"
+        }
+    },
+    {
+        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopImgUrl: "https://global.machenike.com/cdn/shop/products/800X800-__0005_0_81ad159c-adfe-4b2d-8f96-82ecc149348f_533x.png?v=1674032716",
+        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
+        laptopImages: {
+            image1: "https://global.machenike.com/cdn/shop/products/DSC06216.jpg?v=1674036105",
+            image2: "https://global.machenike.com/cdn/shop/products/DSC06219.jpg?v=1674036104",
+            image3: "https://global.machenike.com/cdn/shop/products/DSC06221.jpg?v=1674036105",
+            image4: "https://global.machenike.com/cdn/shop/products/DSC06235.jpg?v=1674036104",
+            image5: "https://global.machenike.com/cdn/shop/products/DSC06229.jpg?v=1674036105"
+        },
+        laptopPrice: "PHP 75,999.00",
+        laptopRating: "5",
+        laptopSold: "25",
         laptopSpecs: {
             cpu: "i9-13900HX",
             gpu: "RTX 4070",
@@ -29,423 +63,8 @@ const laptopProducts = [
         }
     },
     {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
-        laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
-        laptopImages: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
-        },
-        laptopPrice: "PHP 65,000.00",
-        laptopRating: "5",
-        laptopSold: "15",
-        laptopSpecs: {
-            cpu: "i9-13900HX",
-            gpu: "RTX 4070",
-            memory: "16G RAM + 512G SSD",
-            brandName: "Machenike",
-            series: "Gaming",
-            modelNumber: "L16",
-            type: "Laptop",
-            graphicsCardModel: "RTX40series",
-            cpuBrandModel: "Intel 13th Gen Processor",
-            operatingSystem: "Windows 11"
-        }
-    },
-    {
-        laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
+        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopImgUrl: "https://global.machenike.com/cdn/shop/products/3.png?v=1646361566",
         laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
         laptopImages: {
             image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
@@ -471,6 +90,8 @@ const laptopProducts = [
         }
     },
 ]
+
+
 // FUNCTION
 for (let i = 0; i < laptopProducts.length; i++) {
     const productLaptop = laptopProducts[i];
@@ -489,8 +110,27 @@ for (let i = 0; i < laptopProducts.length; i++) {
                     <p class="card-text text-success m-0">${productLaptop.laptopSold} Sold</p>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-success">View Details</button>
-                    <button class="btn wishListBtn border-0"><i class="bi bi-heart-fill text-danger"></i></button>
+                    <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success" data-bs-toggle="modal" data-bs-target="#productDetailsModal">View Details</button>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="productDetailsModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="modalBody" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Add to Wish Lists<i class="bi bi-bookmark-heart-fill"></i></button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Add to Cart <i class="bi bi-cart-plus-fill"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -502,16 +142,131 @@ for (let i = 0; i < laptopProducts.length; i++) {
 
 for (let i = 0; i < wishListBtns.length; i++) {
     wishListBtns[i].addEventListener("click", () => {
+        const wishListHeartBtn = document.getElementById("wishListHeartBtn");
+        const laptopId = wishListBtns[i].id;
+        let productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
+        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
 
-        Swal.fire({
-            icon: "success",
-            title: "This item is added to your wishlist",
-            timer: 1500
-        })
+        if (wishListBtns[i].innerHTML === `<i id="wishListHeartBtn" class="bi bi-heart"></i>`) {
+            Swal.fire({
+                title: 'Add to Wish List',
+                text: "Are you sure to add this item to your wish list?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, add to my wish list.'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: "Added!",
+                    text: "You successfully added this item to your wish list.",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                    
+                      // Add the selected laptop to the array
+                      productWishListArray.push(selectedLaptop);
+
+                      // Store the updated array in local storage
+                      localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                    
+                      wishListHeartBtn.className = "bi bi-heart-fill text-danger"
+
+                }
+              });
+        } else {
+            Swal.fire({
+                title: 'Remove to Wish List',
+                text: "Are you sure to remove this item to your wish list?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove to my wish list.'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: "Removed!",
+                    text: "You successfully removed this item to your wish list.",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+
+                     // Remove the selected laptop from the array
+                     const indexToRemove = productWishListArray.findIndex(item => item.laptopId == laptopId);
+                     if (indexToRemove !== -1) {
+                         productWishListArray.splice(indexToRemove, 1);
+                     }
+ 
+                     // Store the updated array in local storage
+                     localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+
+                    wishListHeartBtn.className = "bi bi-heart";
+                }
+              });
+        }
     });
-}
+};
 
 
+for (let i = 0; i < viewDetails.length; i++) {
+    viewDetails[i].addEventListener("click", () => {
 
+        const laptopId = viewDetails[i].id;
+        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
 
+        const modalTitle = document.getElementById("exampleModalLabel");
+        const modalBody = document.getElementById("modalBody");
+        
+        modalTitle.innerHTML = selectedLaptop.laptopName
+        modalBody.innerHTML = `
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <img src="${selectedLaptop.laptopImgUrl}" class="img-fluid">
+            </div>
+            <div class="mb-2">
+                <div class="row">
+                    <div class="col-3 col-lg-3 p-1">
+                        <img src="${selectedLaptop.laptopImages.image1}" class="img-fluid">
+                    </div>
+                    <div class="col-3 col-lg-3 p-1">
+                        <img src="${selectedLaptop.laptopImages.image2}" class="img-fluid">
+                    </div>
+                    <div class="col-3 col-lg-3 p-1">
+                        <img src="${selectedLaptop.laptopImages.image3}" class="img-fluid">
+                    </div>
+                    <div class="col-3 col-lg-3 p-1">
+                        <img src="${selectedLaptop.laptopImages.image4}" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-12 col-lg-12">
+                <h3>Descriptions</h3>
+                <h6>Quick Specs</h6>
+                <ul>
+                    <li>Brand Name: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.brandName}</span></li>
+                    <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
+                    <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
+                    <li>Model Number: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.modelNumber}</span></li>
+                    <li>Operating System: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.operatingSystem}</span></li>
+                    <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
+                    <li>CPU Brand Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpuBrandModel}</span></li>
+                    <li>GPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.gpu}</span></li>
+                    <li>Graphics Card Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.graphicsCardModel}</span></li>
+                    <li>Memory: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.memory}</span></li>
+                </ul>
+            </div>
+        </div> 
+        `
 
+        for (let i = 0; i < selectedLaptop.laptopSpecs.length; i++) {
+            console.log(selectedLaptop.laptopSpecs[i])
+        }
+    });
+
+        
+};

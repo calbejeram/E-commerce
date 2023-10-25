@@ -16,7 +16,7 @@
     <!-- Machenike Icon -->
     <link rel="icon" href="/assets/static/images/machenike-logo.svg" type="image/x-icon">
     <!-- Machenike Document Title -->
-    <title>Machenike</title>
+    <title>Laptops | Machenike</title>
 </head>
 <body>
     <!-- Header -->
@@ -63,27 +63,30 @@
                   <li class="nav-item">
                     <a class="nav-link navbar-link" href="#">Contact Us</a>
                   </li>
+                  <!-- Mobile -->
                   <div class="shop d-block d-lg-none mb-2 mb-lg-0">
                     <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
                     <button id="cartButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
                     <button id="userButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
                   </div>
+                  <!-- Search -->
                   <div class="search-box d-block d-lg-none">
                     <input id="searchBoxInputMobile" class="form-control d-none" type="text" placeholder="Search Keyword Here">
                   </div>
-                </ul>
-                </div>
-                <div class="search-box d-none d-lg-flex mb-2 mb-lg-0 me-3">
+                  <div class="search-box d-none d-lg-flex mb-2 mb-lg-0 me-3">
                     <form action="#">
                         <input id="searchBoxInputLarge" class="form-control d-none" type="text" placeholder="Search Keyword Here">
                     </form>
                 </div>
+                </ul>
+                </div>
+                <!-- Large -->
               <div class="shop d-none d-lg-block">
                 <button id="searchButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
-                <button id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                <button id="wishListButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
                   <i class="bi bi-bag-heart text-white"></i>
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
-                      0
+                  <span id="wishListCount" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                      
                   </span>
                 </button>
                 <button id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
@@ -92,7 +95,6 @@
                         0
                     </span>
                 </button>
-                <!-- CART MODAL -->
                 <button id="userButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
               </div>
             </div>
@@ -101,12 +103,12 @@
 
     <!-- Main -->
     <main class="py-5">
-        <section id="bread-crumb" class="py-5">
+        <section id="bread-crumb" class="pt-5 pb-3">
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-12">
                 <div class="page-title">
-                  <h2>Laptops</h2>
+                  <h2 class="display-5 fw-bold">Laptops</h2>
                 </div>
               </div>
               <div class="col-12 col-lg-12">
@@ -197,58 +199,54 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-3 d-none d-lg-block">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Graphics Card Series
-                      </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                  <div id="filterContainer">
+                    <div>
+                      <h6>Graphic Card Series</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                      <hr>
+                    </div>
+                    <div>
+                      <h6>System Memory</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <h6>Operating System</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <h6>Storage Type</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <h6>Ports</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Default checkbox
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        System Memory
-                      </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Operating System
-                      </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                        Storage Type
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                        Condition
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div class="col-12 col-lg-9">
                   <div id="laptopProductContainer" class="row mb-lg-3">
@@ -265,7 +263,7 @@
         <section id="footer" class="mt-5">
             <div class="container p-3">
                 <div class="footer-text my-3">
-                    <h4 class="text-black">For Inquiries, contact MachenikePH at (02) 8-555-2300</h4>
+                    <h4 class="text-black">For Inquiries, Contact MachenikePH at (02) 8-555-2300</h4>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-3 my-2 my-lg-0">

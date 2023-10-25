@@ -61,35 +61,56 @@
                   <li class="nav-item">
                     <a class="nav-link navbar-link" href="#">Contact Us</a>
                   </li>
+                  <!-- Mobile -->
                   <div class="shop d-block d-lg-none mb-2 mb-lg-0">
-                    <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
-                    <button id="cartButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-cart3 text-white"></i></button>
+                    <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
+                    <button id="wishListButtonMobile" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle" title="Wish List">
+                        <i class="bi bi-bag-heart text-white"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                            0
+                        </span>
+                    </button>
+                    <button id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle" title="Cart">
+                        <i class="bi bi-cart3 text-white"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                            0
+                        </span>
+                    </button>
                     <button id="userButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
                   </div>
+                  <!-- Search Mobile -->
                   <div class="search-box d-block d-lg-none">
                     <input id="searchBoxInputMobile" class="form-control d-none" type="text" placeholder="Search Keyword Here">
                   </div>
                 </ul>
                 </div>
+                <!-- Search Large -->
                 <div class="search-box d-none d-lg-flex mb-2 mb-lg-0 me-3">
                     <form action="#">
                         <input id="searchBoxInputLarge" class="form-control d-none" type="text" placeholder="Search Keyword Here">
                     </form>
                 </div>
               <div class="shop d-none d-lg-block">
+                <!-- Large -->
                 <button id="searchButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
-                <button id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                <button id="wishListButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle" title="Wish List">
+                    <i class="bi bi-bag-heart text-white"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                        0
+                    </span>
+                </button>
+                <button id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle" title="Cart">
                     <i class="bi bi-cart3 text-white"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                         0
                     </span>
                 </button>
-                <!-- CART MODAL -->
                 <button id="userButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
               </div>
             </div>
           </nav>
 
+          <!-- Hero -->
           <section id="hero">
               <div class="container">
                 <div class="row grid-row-hero d-flex align-items-center justify-content-start">
@@ -98,7 +119,7 @@
                             <span>Game with Machenike</span>
                         </h1>
                         <p class="lead text-white">Play at your peak with the highest performance gaming equipment from Machenike.</p>
-                        <a href="/assets/pages/products/products.html" class="btn fw-bold btn-lg">Shop now</a>
+                        <a href="#product-series" class="btn fw-bold btn-lg">Shop now</a>
                     </div>
                 </div>
               </div>
@@ -169,7 +190,7 @@
         <section id="footer" class="mt-5">
             <div class="container p-3">
                 <div class="footer-text my-3">
-                    <h4 class="text-black">For Inquiries, contact MachenikePH at (02) 8-555-2300</h4>
+                    <h4 class="text-black">For Inquiries, Contact MachenikePH at (02) 8-555-2300</h4>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-3 my-2 my-lg-0">

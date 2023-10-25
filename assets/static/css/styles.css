@@ -3,6 +3,12 @@
 
 
 /* NAVBAR */
+#navbar.active {
+    background: linear-gradient (135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+}
+
 .navbar-brand img {
     width: 50px;
 }
@@ -23,7 +29,12 @@
 
 .nav-item .nav-link,
 .dropdown .nav-link {
-    color: white;
+    color: rgb(255, 255, 255) !important;
+}
+
+.nav-item .nav-link:hover,
+.dropdown .nav-link:hover {
+    color: rgb(3, 255, 179) !important;
 }
 
 .nav-item .nav-link:visited {
@@ -36,8 +47,12 @@
 
 .shop .nav-button i {
     font-size: 1rem;
+    color: white;
 }
 
+.shop .nav-button i:hover {
+    color: rgb(3, 255, 179) !important;
+}
 
 /* HERO */
 #hero {
