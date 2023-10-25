@@ -206,3 +206,7 @@
         font-size: 13px;
     }
 }
+
+.carousel-indicators .active {
+    border: 2px solid rgb(0, 255, 213);
+}

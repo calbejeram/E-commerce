@@ -223,49 +223,60 @@ for (let i = 0; i < viewDetails.length; i++) {
         
         modalTitle.innerHTML = selectedLaptop.laptopName
         modalBody.innerHTML = `
-        <div class="row">
-            <div class="col-12 col-lg-12">
-                <img src="${selectedLaptop.laptopImgUrl}" class="img-fluid">
-            </div>
-            <div class="mb-2">
-                <div class="row">
-                    <div class="col-3 col-lg-3 p-1">
-                        <img src="${selectedLaptop.laptopImages.image1}" class="img-fluid">
-                    </div>
-                    <div class="col-3 col-lg-3 p-1">
-                        <img src="${selectedLaptop.laptopImages.image2}" class="img-fluid">
-                    </div>
-                    <div class="col-3 col-lg-3 p-1">
-                        <img src="${selectedLaptop.laptopImages.image3}" class="img-fluid">
-                    </div>
-                    <div class="col-3 col-lg-3 p-1">
-                        <img src="${selectedLaptop.laptopImages.image4}" class="img-fluid">
-                    </div>
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="${selectedLaptop.laptopImgUrl}" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${selectedLaptop.laptopImages.image1}" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${selectedLaptop.laptopImages.image2}" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${selectedLaptop.laptopImages.image3}" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="${selectedLaptop.laptopImages.image4}" class="img-fluid" alt="...">
                 </div>
             </div>
-            <hr>
-            <div class="col-12 col-lg-12">
-                <h3>Descriptions</h3>
-                <h6>Quick Specs</h6>
-                <ul>
-                    <li>Brand Name: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.brandName}</span></li>
-                    <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
-                    <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
-                    <li>Model Number: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.modelNumber}</span></li>
-                    <li>Operating System: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.operatingSystem}</span></li>
-                    <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
-                    <li>CPU Brand Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpuBrandModel}</span></li>
-                    <li>GPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.gpu}</span></li>
-                    <li>Graphics Card Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.graphicsCardModel}</span></li>
-                    <li>Memory: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.memory}</span></li>
-                </ul>
+            <div class="carousel-indicators position-relative m-0">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImgUrl}') no-repeat center center/cover;"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image1}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image2}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image3}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image4}') no-repeat center center/ cover;"></button>
             </div>
-        </div> 
-        `
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
-        for (let i = 0; i < selectedLaptop.laptopSpecs.length; i++) {
-            console.log(selectedLaptop.laptopSpecs[i])
-        }
+        <hr>
+        <div class="col-12 col-lg-12">
+            <h3>Descriptions</h3>
+            <h6>Quick Specs</h6>
+            <ul>
+                <li>Brand Name: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.brandName}</span></li>
+                <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
+                <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
+                <li>Model Number: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.modelNumber}</span></li>
+                <li>Operating System: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.operatingSystem}</span></li>
+                <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
+                <li>CPU Brand Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpuBrandModel}</span></li>
+                <li>GPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.gpu}</span></li>
+                <li>Graphics Card Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.graphicsCardModel}</span></li>
+                <li>Memory: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.memory}</span></li>
+            </ul>
+        </div>
+        
+        `
     });
 
         
