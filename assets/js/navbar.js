@@ -13,6 +13,7 @@ const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 const cartButtonLarge = document.getElementById("cartButtonLarge");
 
 // FUNCTIONS
+
 // Navbar Scroll
 window.addEventListener("scroll", () => {
     let scroll = window.scrollY;

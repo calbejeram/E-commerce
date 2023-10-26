@@ -1,5 +1,7 @@
 // VARIABLES
 const featuresContainer = document.querySelector("#featuresContainer");
+
+// Features
 const features = [
     {
         featureImgUrl: "https://img.icons8.com/fluency/48/delivery.png",
@@ -25,6 +27,8 @@ const features = [
 
 
 // FUNCTIONS
+
+// Appending Features
 for (let i = 0; i < features.length; i++) {
     const feature = features[i];
 

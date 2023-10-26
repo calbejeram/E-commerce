@@ -4,13 +4,23 @@ const filterContainer = document.getElementById("filterContainer");
 const wishListButtons = document.getElementsByClassName("wishListButton");
 const addToCartButtons = document.getElementsByClassName("addToCartButton");
 const viewDetails = document.getElementsByClassName("viewDetails");
-const wishListCount = document.getElementById("wishListCount");
+const wishListCountMobile = document.getElementById("wishListCountMobile");
+const wishListCountLarge = document.getElementById("wishListCountLarge");
+const cartCountMobile = document.getElementById("cartCountMobile");
+const cartCountLarge = document.getElementById("cartCountLarge");
 const carouselInner = document.getElementById("carouselInner");
 
-
+// Wish List Count
 const wishLists = localStorage.getItem("ProductWishLists") ? JSON.parse(localStorage.getItem("ProductWishLists")) : []
-wishListCount.innerHTML = wishLists.length;
+wishListCountMobile.innerHTML = wishLists.length;
+wishListCountLarge.innerHTML = wishLists.length;
 
+// Cart List Count
+const cart = localStorage.getItem("ProductCartList") ? JSON.parse(localStorage.getItem("ProductCartList")) : []
+cartCountMobile.innerHTML = cart.length;
+cartCountLarge.innerHTML = cart.length;
+
+// Dummy Product Data
 const laptopProducts = [
     {
         laptopId: 1,
@@ -338,6 +348,7 @@ const laptopProducts = [
     },
 ];
 
+// Dummy Product Filter Data
 const filterProducts = [
     {
         filterTitle: "Graphics Card Series",
@@ -400,6 +411,8 @@ const filterProducts = [
 
 
 // FUNCTION
+
+// Product Card and Product Pop Up Modal
 for (let i = 0; i < laptopProducts.length; i++) {
     const productLaptop = laptopProducts[i];
 
@@ -425,11 +438,11 @@ for (let i = 0; i < laptopProducts.length; i++) {
                     <div class="col-12 col-lg-8">
                         <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#productDetailsModal">View Details</button>
                     </div>
-                    <div class="col-12 col-lg-2">
-                        <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn w-100"><i class="bi bi-heart me-2 me-lg-0"></i><span class="d-lg-none">Add to Wish Lists</span></button>
+                    <div class="col-6 col-lg-2">
+                        <button type="button" id="${productLaptop.laptopId}" class="addToCartButton btn w-100"><i class="bi bi-cart-plus me-2 me-lg-0" title="Add to Cart"></i><span class="d-lg-none">Add to Cart</span></button>
                     </div>
-                    <div class="col-12 col-lg-2">
-                        <button type="button" id="${productLaptop.laptopId}" class="addToCartButton btn w-100"><i class="bi bi-cart-plus-fill me-2 me-lg-0"></i><span class="d-lg-none">Add to Cart</span></button>
+                    <div class="col-6 col-lg-2">
+                        <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn w-100"><i class="bi bi-heart me-2 me-lg-0" title="Add to Wish Lists"></i><span class="d-lg-none">Add to Wish Lists</span></button>
                     </div>
                 </div>    
             </div>
@@ -463,6 +476,8 @@ for (let i = 0; i < laptopProducts.length; i++) {
     laptopProductContainer.appendChild(productLaptopElement);
 };
 
+
+// Adding Product to Product Wish List Local Storage
 for (let i = 0; i < wishListButtons.length; i++) {
     wishListButtons[i].addEventListener("click", () => {
 
@@ -471,94 +486,125 @@ for (let i = 0; i < wishListButtons.length; i++) {
         const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
         
         
-        // if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Already in Wish Lists',
-        //         text: 'This item is already added in your wish lists.',
-        //         showConfirmButton: false,
-        //         timer: 1500
-        //       });
-        // } else {
-        //     Swal.fire({
-        //         title: 'Add to Wish List?',
-        //         text: "Are you sure to add this item to your wish lists?",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Yes, add this item.'
-        //       }).then((result) => {
-        //         if (result.isConfirmed) {
-        //           Swal.fire({
-        //             title: 'Added to your Wish Lists.',
-        //             text: 'This item is successfully added to your wish lists.',
-        //             icon: 'success',
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //             });
-
-        //             productWishListArray.push(selectedLaptop);
-        //             localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
-        //             window.location.reload();
-        //         };
-        //       });
-            
-        // }
-
         if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+            Swal.fire({
+                title: 'Already in Wish Lists',
+                text: "This item is already added in your wish lists.",
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Remove this item from wish lists'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Removed',
+                    text: 'This is item has been removed from your wish lists.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                    const indexToRemove = productWishListArray.findIndex(item => item.laptopId == laptopId);
+                    if (indexToRemove !== -1) {
+                        productWishListArray.splice(indexToRemove, 1);
+                    }
+
+                    localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                    window.location.reload();
+                };
+              });
+        } else {
             Swal.fire({
                 title: 'Add to Wish List?',
                 text: "Are you sure to add this item to your wish lists?",
-                icon: 'warning',
+                iconHtml: '<i class="bi bi-heart-fill text-danger"></i>',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, add this item.'
               }).then((result) => {
                 if (result.isConfirmed) {
-                    if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Already in Wish Lists',
-                            text: 'This item is already added in your wish lists.',
-                            showConfirmButton: false,
-                            timer: 1500
-                          });
-                    } else {
-                        Swal.fire({
-                            title: 'Add to Wish List?',
-                            text: "Are you sure to add this item to your wish lists?",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes, add this item.'
-                          }).then((result) => {
-                            if (result.isConfirmed) {
-                              Swal.fire({
-                                title: 'Added to your Wish Lists.',
-                                text: 'This item is successfully added to your wish lists.',
-                                icon: 'success',
-                                showConfirmButton: false,
-                                timer: 1500
-                                });
-            
-                                productWishListArray.push(selectedLaptop);
-                                localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
-                                window.location.reload();
-                            };
-                          });
-                    }
+                  Swal.fire({
+                    title: 'Added to your Wish Lists.',
+                    text: 'This item is successfully added to your wish lists.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
 
+                    productWishListArray.push(selectedLaptop);
+                    localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                    window.location.reload();
                 };
               });
-        }
 
-        
+            };
     });
 };
 
+
+// Adding Product to Product Cart List Local Storage
+for (let i = 0; i < addToCartButtons.length; i++) {
+    addToCartButtons[i].addEventListener("click", () => {
+
+        const laptopId = addToCartButtons[i].id;
+        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+        const productCartArray = JSON.parse(localStorage.getItem("ProductCartList")) || [];
+        
+        
+        if (productCartArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+            Swal.fire({
+                title: 'Already in Cart',
+                text: "This item is already added in your cart.",
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Remove this item from cart'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Removed',
+                    text: 'This is item has been removed from your cart.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                    const indexToRemove = productCartArray.findIndex(item => item.laptopId == laptopId);
+                    if (indexToRemove !== -1) {
+                        productCartArray.splice(indexToRemove, 1);
+                    }
+
+                    localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
+                    window.location.reload();
+                };
+              });
+        } else {
+            Swal.fire({
+                title: 'Add to Cart?',
+                text: "Are you sure to add this item to your cart?",
+                iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, add this item.'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Added to your cart.',
+                    text: 'This item is successfully added to your cart.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+
+                    productCartArray.push(selectedLaptop);
+                    localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
+                    window.location.reload();
+                };
+              });
+
+            };
+    });
+};
+
+// Checking if the Product is already added/selected/removed to the wish list.
 for (let i = 0; i < wishListButtons.length; i++) {
     const laptopId = wishListButtons[i].id;
     const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
@@ -569,12 +615,22 @@ for (let i = 0; i < wishListButtons.length; i++) {
     } else {
         wishListButtons[i].innerHTML = `<i class="bi bi-heart me-2 me-lg-0"></i>`
     }
-}
+};
 
 
+for (let i = 0; i < addToCartButtons.length; i++) {
+    const laptopId = addToCartButtons[i].id;
+    const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+    const productCartArray = JSON.parse(localStorage.getItem("ProductCartList")) || [];
 
+    if (productCartArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+        addToCartButtons[i].innerHTML = `<i class="bi bi-cart-check-fill text-success me-2 me-lg-0"></i>`
+    } else {
+        addToCartButtons[i].innerHTML = `<i class="bi bi-cart-plus me-2 me-lg-0"></i>`
+    }
+};
 
-
+// Iputting the Selected/Clicked specific item from the Laptop Products
 for (let i = 0; i < viewDetails.length; i++) {
     viewDetails[i].addEventListener("click", () => {
         const laptopId = viewDetails[i].id;
@@ -643,13 +699,12 @@ for (let i = 0; i < viewDetails.length; i++) {
                 <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
                 <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
             </ul>
-        </div>
-        
+        </div> 
         `
     });
 };
 
-
+// Displaying the Filter Product Title and its Options to its specified parent element
 for (let i = 0; i < filterProducts.length; i++) {
     const filterProduct = filterProducts[i];
     const filterProductElement = document.createElement("div");
@@ -676,7 +731,7 @@ for (let i = 0; i < filterProducts.length; i++) {
 };
 
 
-// Quantity Button
+// Quantity Button Functionalities: Add and Minus Quantity
 const productQuantity = document.getElementById("quantity");
 let quantity = 1; 
 productQuantity.innerHTML = quantity;

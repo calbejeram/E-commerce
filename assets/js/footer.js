@@ -4,7 +4,7 @@ const support = document.getElementById("support");
 const accounts = document.getElementById("accounts");
 const payments = document.getElementById("payments");
 
-
+// Links
 const column1 = [
     "About Machenike Inc.",
     "Privacy Policy",
@@ -61,6 +61,7 @@ const column4 = [
 
 // FUNCTIONS
 
+// Appending Links to footer section
 for (let i = 0; i < column1.length; i++) {
     const anchor = document.createElement("a");
     anchor.href = "#";

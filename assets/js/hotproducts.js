@@ -1,6 +1,8 @@
 // VARIABLES
 const showBtn = document.getElementById("showBtn");
 const hottestProductsContainer = document.querySelector("#hottestProducts");
+
+// Hot Products Dummy Data
 const hotProducts = [
     {
         productImgUrl: "https://global.machenike.com/cdn/shop/products/1_70b37b0e-1498-4b44-8f43-d4eb0b25d9b9_533x.png?v=1665397864",

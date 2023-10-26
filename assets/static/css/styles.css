@@ -1,6 +1,12 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
+/* General */
+
+.carousel-indicators .active {
+    border: 2px solid rgb(0, 255, 213);
+}
+
 
 /* NAVBAR */
 #navbar {
@@ -208,8 +214,4 @@
     #hottest-laptops .card .card-body p {
         font-size: 13px;
     }
-}
-
-.carousel-indicators .active {
-    border: 2px solid rgb(0, 255, 213);
 }

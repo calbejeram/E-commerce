@@ -1,5 +1,7 @@
 // VARIABLES
 const productSeriesContainer = document.querySelector("#productSeries");
+
+// Product Series Dummy Data
 const productSeries = [
     {
         productImgUrl: "https://global.machenike.com/cdn/shop/collections/9_0006_3_535x.png?v=1637060714",
@@ -40,6 +42,8 @@ const productSeries = [
 ]
 
 // FUNCTIONS
+
+// Appening Product Series to its parent element
 for (let i = 0; i < productSeries.length; i++) {
     const product = productSeries[i];
 
