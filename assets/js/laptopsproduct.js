@@ -2,6 +2,7 @@
 const laptopProductContainer = document.getElementById("laptopProductContainer");
 const filterContainer = document.getElementById("filterContainer");
 const wishListButtons = document.getElementsByClassName("wishListButton");
+const addToCartButtons = document.getElementsByClassName("addToCartButton");
 const viewDetails = document.getElementsByClassName("viewDetails");
 const wishListCount = document.getElementById("wishListCount");
 const carouselInner = document.getElementById("carouselInner");
@@ -12,7 +13,7 @@ wishListCount.innerHTML = wishLists.length;
 
 const laptopProducts = [
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 1,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
         laptopName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
         laptopImages: {
@@ -22,7 +23,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
             image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
         },
-        laptopPrice: "₱ 65,000.00",
+        laptopPrice: "65,000.00",
         laptopRating: "5",
         laptopSold: "15",
         laptopSpecs: {
@@ -39,7 +40,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 2,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/files/16air_-800_0000_8.jpg?v=1693986456",
         laptopName: "Machenike L16A Gen Ryzen 7000 AMD (16”) Laptop",
         laptopImages: {
@@ -49,7 +50,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/files/16air-1a-_-7_750x.jpg?v=1693986452",
             image5: "https://global.machenike.com/cdn/shop/files/0._750x.jpg?v=1693986456"
         },
-        laptopPrice: "PHP 75,999.00",
+        laptopPrice: "75,999.00",
         laptopRating: "5",
         laptopSold: "25",
         laptopSpecs: {
@@ -66,7 +67,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 3,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/files/2_9ef49445-10a9-470a-aeab-d99585909cbc.jpg?v=1693984561",
         laptopName: "Machenike L15A Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -76,7 +77,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/files/PCIE3.0.jpg?v=1693984582",
             image5: "https://global.machenike.com/cdn/shop/files/dae766e31a1abf3ec93b6c5009aecb29_9634bc4f-f5cb-418f-8a4c-1410fb7944c0.jpg?v=1693984575"
         },
-        laptopPrice: "PHP 49,000.00",
+        laptopPrice: "49,000.00",
         laptopRating: "5",
         laptopSold: "31",
         laptopSpecs: {
@@ -93,7 +94,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 4,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/16pro_800X800_0003__5.jpg?v=1681985245",
         laptopName: "Machenike L16 Pro Gen 13 Intel (16”) Gaming Laptop",
         laptopImages: {
@@ -103,7 +104,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/92134190ffe60b171dfa0b2d055847f4.jpg?v=1681985245",
             image5: "https://global.machenike.com/cdn/shop/products/dae766e31a1abf3ec93b6c5009aecb29.jpg?v=1681985245"
         },
-        laptopPrice: "PHP 89,000.00",
+        laptopPrice: "89,000.00",
         laptopRating: "5",
         laptopSold: "12",
         laptopSpecs: {
@@ -120,7 +121,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 5,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/15_800X800-1234_e59169eb-9f2c-45ca-97f0-9d1deba123e7_750x.jpg?v=1681983436",
         laptopName: "Machenike L15 Gen 13 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -130,7 +131,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/15-6.jpg?v=1681983436",
             image5: "https://global.machenike.com/cdn/shop/products/15-5.jpg?v=1681983436"
         },
-        laptopPrice: "PHP 51,000.00",
+        laptopPrice: "51,000.00",
         laptopRating: "5",
         laptopSold: "27",
         laptopSpecs: {
@@ -147,7 +148,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 6,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/8_e1111653-d646-4ee6-806c-422858c7ff3a_750x.jpg?v=1679452988",
         laptopName: "Machenike S16 Gen 12 Intel (15.6”) Gaming Laptop - Orange",
         laptopImages: {
@@ -157,7 +158,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/DSC09329_750x.jpg?v=1679452988",
             image5: "https://global.machenike.com/cdn/shop/files/dae766e31a1abf3ec93b6c5009aecb29_9634bc4f-f5cb-418f-8a4c-1410fb7944c0.jpg?v=1693984575"
         },
-        laptopPrice: "PHP 70,000.00",
+        laptopPrice: "70,000.00",
         laptopRating: "5",
         laptopSold: "9",
         laptopSpecs: {
@@ -174,7 +175,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 7,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/030000_750x.jpg?v=1674879562",
         laptopName: "Machenike L15A Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -184,7 +185,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/2_f434c20a-b142-49b3-9af5-ce65eec719f7_750x.jpg?v=1674879554",
             image5: "https://global.machenike.com/cdn/shop/products/1_0479ff54-6688-44e3-b7d6-ae8676af6912_750x.jpg?v=1674879555"
         },
-        laptopPrice: "PHP 51,000.00",
+        laptopPrice: "51,000.00",
         laptopRating: "5",
         laptopSold: "28",
         laptopSpecs: {
@@ -201,7 +202,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 8,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/800X800-__0005_0_81ad159c-adfe-4b2d-8f96-82ecc149348f.png?v=1674032716",
         laptopName: "Machenike L15C Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -211,7 +212,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/DSC06222_750x.jpg?v=1674036103",
             image5: "https://global.machenike.com/cdn/shop/products/DSC06230_750x.jpg?v=1674036104"
         },
-        laptopPrice: "PHP 46,500.00",
+        laptopPrice: "46,500.00",
         laptopRating: "5",
         laptopSold: "7",
         laptopSpecs: {
@@ -228,7 +229,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 9,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/adbd64503fcd5abaff264259d2f44cad.png?v=1669884844",
         laptopName: "Machenike F117-7Plus / L17 Gen 12 Intel (17.3”) Gaming Laptop",
         laptopImages: {
@@ -238,7 +239,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/2_0f9b5b85-e05c-4815-9ffd-c3f1cf180a24.jpg?v=1669884844",
             image5: "https://global.machenike.com/cdn/shop/products/1_49adf526-32df-464f-96cf-6bbf0e656600.jpg?v=1669884844"
         },
-        laptopPrice: "PHP 57,499.00",
+        laptopPrice: "57,499.00",
         laptopRating: "5",
         laptopSold: "22",
         laptopSpecs: {
@@ -255,7 +256,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 10,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/15__0014_9_9c330cad-1835-4e4f-867f-ae45f4056b04.png?v=1665395084",
         laptopName: "Machenike L15A Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -265,7 +266,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/1_02_173a53a2-9f2c-4a58-aa48-27e7b33cef2a_750x.jpg?v=1665395085",
             image5: "https://global.machenike.com/cdn/shop/files/dae766e31a1abf3ec93b6c5009aecb29_9634bc4f-f5cb-418f-8a4c-1410fb7944c0.jpg?v=1693984575"
         },
-        laptopPrice: "PHP 49,000.00",
+        laptopPrice: "49,000.00",
         laptopRating: "5",
         laptopSold: "15",
         laptopSpecs: {
@@ -282,7 +283,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 11,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/3.png?v=1646361566",
         laptopName: "Machenike L15A Gen 12 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -292,13 +293,13 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/products/17_-4.jpg?v=1661591338",
             image5: "https://global.machenike.com/cdn/shop/products/hqdefault_8832cbca-5a1e-4c19-846d-7f46db183559.jpg?v=1661591336"
         },
-        laptopPrice: "PHP 63,000.00",
+        laptopPrice: "63,000.00",
         laptopRating: "5",
         laptopSold: "20",
         laptopSpecs: {
             cpu: "i9-12900H",
             gpu: "RTX 3080 Ti",
-            memory: "16G DDR5 RAM + 512G PCIE4.0 SSD + 1T HDD",
+            memory: "16G DDR5 RAM + 512G SSD + 1T HDD",
             brandName: "Machenike",
             series: "Gaming",
             modelNumber: " S17",
@@ -309,7 +310,7 @@ const laptopProducts = [
         }
     },
     {
-        laptopId: Math.floor((Math.random() * Date.now())),
+        laptopId: 12,
         laptopImgUrl: "https://global.machenike.com/cdn/shop/products/9_0008_1.png?v=1636718872",
         laptopName: "Machenike T58-VA Gen 11 Intel (15.6”) Gaming Laptop",
         laptopImages: {
@@ -319,7 +320,7 @@ const laptopProducts = [
             image4: "https://global.machenike.com/cdn/shop/files/PCIE3.0.jpg?v=1693984582",
             image5: "https://global.machenike.com/cdn/shop/files/dae766e31a1abf3ec93b6c5009aecb29_9634bc4f-f5cb-418f-8a4c-1410fb7944c0.jpg?v=1693984575"
         },
-        laptopPrice: "PHP 41,000.00",
+        laptopPrice: "41,000.00",
         laptopRating: "4",
         laptopSold: "55",
         laptopSpecs: {
@@ -406,32 +407,37 @@ for (let i = 0; i < laptopProducts.length; i++) {
     productLaptopElement.className = "col-6 col-lg-4 mb-4";
 
     productLaptopElement.innerHTML = `
-        <div class="card bg-white rounded-0">
+        <div class="card bg-white rounded-0 p-0">
             <img src="${productLaptop.laptopImgUrl}" class="card-img-top" alt="${productLaptop.laptopName}">
             <div class="card-body px-3">
-                <p class="card-text m-0">${productLaptop.laptopName}</p>
-                <p class="card-text fw-bold text-success m-0">${productLaptop.laptopPrice}</p>
+                <p class="card-text m-0 fw-bold">${productLaptop.laptopName}</p>
+                <div>
+                    <p class="m-0 small">${productLaptop.laptopSpecs.cpu}</p>
+                    <p class="m-0 small">${productLaptop.laptopSpecs.gpu}</p>
+                    <p class="m-0 small">${productLaptop.laptopSpecs.memory}</p>
+                </div>
+                <p class="card-text fw-bold text-success m-0">₱ ${productLaptop.laptopPrice}</p>
                 <div class="d-flex justify-content-between mb-2">
                     <p class="card-text text-success m-0 fw-bold"><i class="bi bi-star-fill text-warning me-2"></i>${productLaptop.laptopRating} Ratings</p>
                     <p class="card-text text-success m-0">${productLaptop.laptopSold} Sold</p>
                 </div>
                 <div class="row g-2">
-                    <div class="col-12 col-lg-7">
-                        <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#productDetailsModal"><i class="bi bi-eye me-2"></i>View Details</button>
+                    <div class="col-12 col-lg-8">
+                        <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#productDetailsModal">View Details</button>
                     </div>
-                    <div class="col-12 col-lg-7">
-                        <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn btn-success w-100" data-bs-dismiss="modal"><i class="bi bi-bookmark-heart-fill me-2"></i>Add to Wish Lists</button>
+                    <div class="col-12 col-lg-2">
+                        <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn w-100"><i class="bi bi-heart me-2 me-lg-0"></i><span class="d-lg-none">Add to Wish Lists</span></button>
                     </div>
-                    <div class="col-12 col-lg-7">
-                        <button type="button" class="btn btn-success w-100" data-bs-dismiss="modal"><i class="bi bi-cart-plus-fill me-2"></i>Add to Cart</button>
+                    <div class="col-12 col-lg-2">
+                        <button type="button" id="${productLaptop.laptopId}" class="addToCartButton btn w-100"><i class="bi bi-cart-plus-fill me-2 me-lg-0"></i><span class="d-lg-none">Add to Cart</span></button>
                     </div>
-                </div>
+                </div>    
             </div>
         </div>
 
         <!-- Modal -->
         <div class="modal fade" id="productDetailsModal">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
@@ -441,10 +447,10 @@ for (let i = 0; i < laptopProducts.length; i++) {
 
                     </div>
                     <div class="modal-footer">
-                        <p class="lead fw-bold">Quantity: </p>
+                        <p>Quantity: </p>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button id="minusButton" onclick="minusQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-dash"></i></button>
-                            <input type="text" class="form-control w-25 text-center" id="quantity" value="1">
+                            <span class="px-3 py-2 text-center" id="quantity"></span>
                             <button id="addButton" onclick="addQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-plus"></i></button>
                         </div>
                         <button class="btn btn-success w-25">Buy</button>
@@ -457,14 +463,113 @@ for (let i = 0; i < laptopProducts.length; i++) {
     laptopProductContainer.appendChild(productLaptopElement);
 };
 
-// for (let i = 0; i < wishListButtons.length; i++) {
-//     wishListButtons[i].addEventListener("click", () => {
+for (let i = 0; i < wishListButtons.length; i++) {
+    wishListButtons[i].addEventListener("click", () => {
 
-//         const laptopId = wishListButtons[i].parentElement.parentElement.parentElement.parentElement.className;
-//         const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
-//         console.log(laptopId)
-//     });
-// };
+        const laptopId = wishListButtons[i].id;
+        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+        const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
+        
+        
+        // if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+        //     Swal.fire({
+        //         icon: 'error',
+        //         title: 'Already in Wish Lists',
+        //         text: 'This item is already added in your wish lists.',
+        //         showConfirmButton: false,
+        //         timer: 1500
+        //       });
+        // } else {
+        //     Swal.fire({
+        //         title: 'Add to Wish List?',
+        //         text: "Are you sure to add this item to your wish lists?",
+        //         icon: 'warning',
+        //         showCancelButton: true,
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Yes, add this item.'
+        //       }).then((result) => {
+        //         if (result.isConfirmed) {
+        //           Swal.fire({
+        //             title: 'Added to your Wish Lists.',
+        //             text: 'This item is successfully added to your wish lists.',
+        //             icon: 'success',
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //             });
+
+        //             productWishListArray.push(selectedLaptop);
+        //             localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+        //             window.location.reload();
+        //         };
+        //       });
+            
+        // }
+
+        if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+            Swal.fire({
+                title: 'Add to Wish List?',
+                text: "Are you sure to add this item to your wish lists?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, add this item.'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Already in Wish Lists',
+                            text: 'This item is already added in your wish lists.',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+                    } else {
+                        Swal.fire({
+                            title: 'Add to Wish List?',
+                            text: "Are you sure to add this item to your wish lists?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, add this item.'
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              Swal.fire({
+                                title: 'Added to your Wish Lists.',
+                                text: 'This item is successfully added to your wish lists.',
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+            
+                                productWishListArray.push(selectedLaptop);
+                                localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                                window.location.reload();
+                            };
+                          });
+                    }
+
+                };
+              });
+        }
+
+        
+    });
+};
+
+for (let i = 0; i < wishListButtons.length; i++) {
+    const laptopId = wishListButtons[i].id;
+    const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+    const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
+
+    if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+        wishListButtons[i].innerHTML = `<i class="bi bi-heart-fill text-danger me-2 me-lg-0"></i>`
+    } else {
+        wishListButtons[i].innerHTML = `<i class="bi bi-heart me-2 me-lg-0"></i>`
+    }
+}
 
 
 
@@ -502,12 +607,12 @@ for (let i = 0; i < viewDetails.length; i++) {
                 </div>
             </div>
             <div class="carousel-indicators position-relative m-0">
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImgUrl}') no-repeat center center/cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image1}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image2}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image3}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image4}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="5" aria-label="Slide 6" style="height: 50px; width: 50px; background: url('${selectedLaptop.laptopImages.image5}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImgUrl}') no-repeat center center/cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image1}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image2}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image3}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image4}') no-repeat center center/ cover;"></button>
+                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="5" aria-label="Slide 6" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image5}') no-repeat center center/ cover;"></button>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -522,7 +627,9 @@ for (let i = 0; i < viewDetails.length; i++) {
         <hr>
 
         <div class="col-12 col-lg-12">
-            <h3><i class="bi bi-list-task me-2"></i>Descriptions</h3>
+            <h3>${selectedLaptop.laptopName}</h3>
+            <h3 class="text-success fw-bold">₱ ${selectedLaptop.laptopPrice}</h3>
+            <h4><i class="bi bi-list-task me-2"></i>Descriptions</h4>
             <h6>Quick Specs</h6>
             <ul>
                 <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
@@ -569,39 +676,39 @@ for (let i = 0; i < filterProducts.length; i++) {
 };
 
 
-let quantity = 1; // Initialize quantity here, outside of the functions
-productQuantity.value = quantity;
+// Quantity Button
+const productQuantity = document.getElementById("quantity");
+let quantity = 1; 
+productQuantity.innerHTML = quantity;
+
+if (true) {
+    const minusButton = document.getElementById("minusButton");
+    minusButton.classList.add("disabled");
+}
 
 function addQuantity() {
-    // Increase the quantity by 1
+
     quantity += 1;
 
-    // Update the quantity displayed in the HTML
     const productQuantity = document.getElementById("quantity");
-    productQuantity.value = quantity;
+    productQuantity.innerHTML = quantity;
 
-    // You may want to remove any "disabled" class from the minus button here
     const minusButton = document.getElementById("minusButton");
     minusButton.classList.remove("disabled");
 }
 
 function minusQuantity() {
     if (quantity <= 0) {
-        // Prevent negative values for quantity
         return;
     }
 
-    // Decrease the quantity by 1
     quantity -= 1;
 
-    // Update the quantity displayed in the HTML
     const productQuantity = document.getElementById("quantity");
-    productQuantity.value = quantity;
+    productQuantity.innerHTML = quantity;
 
     if (quantity <= 1) {
-        
-        // If quantity is now 0 or less, add the "disabled" class to the minus button
         const minusButton = document.getElementById("minusButton");
         minusButton.classList.add("disabled");
     }
-}
+};
