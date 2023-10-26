@@ -3,6 +3,9 @@
 
 
 /* NAVBAR */
+#navbar {
+    z-index: 999 !important;
+}
 #navbar.active {
     background: linear-gradient (135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(30px);
