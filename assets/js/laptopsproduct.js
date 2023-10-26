@@ -9,6 +9,7 @@ const wishListCountLarge = document.getElementById("wishListCountLarge");
 const cartCountMobile = document.getElementById("cartCountMobile");
 const cartCountLarge = document.getElementById("cartCountLarge");
 const carouselInner = document.getElementById("carouselInner");
+const sort = document.querySelectorAll("#bestSeller, #priceLowToHigh, #priceHighToLow");
 
 // Wish List Count
 const wishLists = localStorage.getItem("ProductWishLists") ? JSON.parse(localStorage.getItem("ProductWishLists")) : []
@@ -89,7 +90,7 @@ const laptopProducts = [
         },
         laptopPrice: "49,000.00",
         laptopRating: "5",
-        laptopSold: "31",
+        laptopSold: "41",
         laptopSpecs: {
             cpu: "i5-12650H",
             gpu: "RTX 4050",
@@ -143,7 +144,7 @@ const laptopProducts = [
         },
         laptopPrice: "51,000.00",
         laptopRating: "5",
-        laptopSold: "27",
+        laptopSold: "44",
         laptopSpecs: {
             cpu: "i5-13500H",
             gpu: "RTX 4050",
@@ -224,7 +225,7 @@ const laptopProducts = [
         },
         laptopPrice: "46,500.00",
         laptopRating: "5",
-        laptopSold: "7",
+        laptopSold: "19",
         laptopSpecs: {
             cpu: "i7-12700H",
             gpu: "RTX 4050",
@@ -332,7 +333,7 @@ const laptopProducts = [
         },
         laptopPrice: "41,000.00",
         laptopRating: "4",
-        laptopSold: "55",
+        laptopSold: "33",
         laptopSpecs: {
             cpu: "i5-12650H",
             gpu: "RTX 4050",
@@ -353,20 +354,16 @@ const filterProducts = [
     {
         filterTitle: "Graphics Card Series",
         filterOptions: {
-            option1: "GTX 1650",
-            option2: "GTX 1650 Ti",
-            option3: "RTX 2060",
-            option4: "RTX 2070",
-            option5: "RTX 2080 Ti",
-            option6: "RTX 3060",
-            option7: "RTX 3070",
-            option8: "RTX 3080 Ti",
-            option9: "RTX 4050",
-            option10: "RTX 4060",
-            option11: "RTX 4070",
-            option12: "RTX 4080",
-            option13: "RTX 4090",
-            option14: "AMD Ryzen 7",
+            option1: "RTX 2080 Ti",
+            option2: "RTX 3060",
+            option3: "RTX 3070",
+            option4: "RTX 3080 Ti",
+            option5: "RTX 4050",
+            option6: "RTX 4060",
+            option7: "RTX 4070",
+            option8: "RTX 4080",
+            option9: "RTX 4090",
+            option10: "AMD Ryzen 7",
         }
     },
     {
@@ -412,324 +409,409 @@ const filterProducts = [
 
 // FUNCTION
 
+// Setting Active class to sort buttons
+function setActiveClass() {
+    const setActive = (id) => {
+        sort.forEach(item => {
+            item === id ? item.classList.add("active") : item.classList.remove("active");
+        });
+    };
+    
+    sort.forEach(item => {
+        item.addEventListener("click", () => {
+            setActive(item);
+            if (item.innerHTML === "Best Seller") {
+                laptopProductContainer.innerHTML = "";
+                const bestSellerProducts = laptopProducts.slice().sort((a, b) => b.laptopSold - a.laptopSold);
+                renderLaptopProducts(bestSellerProducts);
+                addToWishList(wishListButtons);
+                addToCart(addToCartButtons);
+                addedToWishList(wishListButtons);
+                addedToCart(addToCartButtons);
+                renderModalDetails(viewDetails);
+            } else if (item.innerHTML === "Price Low to High") {
+                laptopProductContainer.innerHTML = "";
+                laptopProducts.sort((a, b) => parseFloat(a.laptopPrice.replace(/,/g, '')) - parseFloat(b.laptopPrice.replace(/,/g, '')));
+                renderLaptopProducts(laptopProducts);
+                addToWishList(wishListButtons);
+                addToCart(addToCartButtons);
+                addedToWishList(wishListButtons);
+                addedToCart(addToCartButtons);
+                renderModalDetails(viewDetails);
+            } else {
+                laptopProductContainer.innerHTML = "";
+                laptopProducts.sort((a, b) => parseFloat(b.laptopPrice.replace(/,/g, '')) - parseFloat(a.laptopPrice.replace(/,/g, '')));
+                renderLaptopProducts(laptopProducts);
+                addToWishList(wishListButtons);
+                addToCart(addToCartButtons);
+                addedToWishList(wishListButtons);
+                addedToCart(addToCartButtons);
+                renderModalDetails(viewDetails);
+            }
+        })
+    });
+}
+
+setActiveClass();
+
 // Product Card and Product Pop Up Modal
-for (let i = 0; i < laptopProducts.length; i++) {
-    const productLaptop = laptopProducts[i];
-
-    const productLaptopElement = document.createElement("div");
-    productLaptopElement.className = "col-6 col-lg-4 mb-4";
-
-    productLaptopElement.innerHTML = `
-        <div class="card bg-white rounded-0 p-0">
-            <img src="${productLaptop.laptopImgUrl}" class="card-img-top" alt="${productLaptop.laptopName}">
-            <div class="card-body px-3">
-                <p class="card-text m-0 fw-bold">${productLaptop.laptopName}</p>
-                <div>
-                    <p class="m-0 small">${productLaptop.laptopSpecs.cpu}</p>
-                    <p class="m-0 small">${productLaptop.laptopSpecs.gpu}</p>
-                    <p class="m-0 small">${productLaptop.laptopSpecs.memory}</p>
-                </div>
-                <p class="card-text fw-bold text-success m-0">₱ ${productLaptop.laptopPrice}</p>
-                <div class="d-flex justify-content-between mb-2">
-                    <p class="card-text text-success m-0 fw-bold"><i class="bi bi-star-fill text-warning me-2"></i>${productLaptop.laptopRating} Ratings</p>
-                    <p class="card-text text-success m-0">${productLaptop.laptopSold} Sold</p>
-                </div>
-                <div class="row g-2">
-                    <div class="col-12 col-lg-8">
-                        <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#productDetailsModal">View Details</button>
+function renderLaptopProducts(laptopProducts) {
+    for (let i = 0; i < laptopProducts.length; i++) {
+        const productLaptop = laptopProducts[i];
+    
+        const productLaptopElement = document.createElement("div");
+        productLaptopElement.className = "col-6 col-lg-4 mb-4";
+    
+        productLaptopElement.innerHTML = `
+            <div class="card bg-white rounded-0 p-0">
+                <img src="${productLaptop.laptopImgUrl}" class="card-img-top" alt="${productLaptop.laptopName}">
+                <div class="card-body px-3">
+                    <p class="card-text m-0 fw-bold">${productLaptop.laptopName}</p>
+                    <div>
+                        <p class="m-0 small">${productLaptop.laptopSpecs.cpu}</p>
+                        <p class="m-0 small">${productLaptop.laptopSpecs.gpu}</p>
+                        <p class="m-0 small">${productLaptop.laptopSpecs.memory}</p>
                     </div>
-                    <div class="col-6 col-lg-2">
-                        <button type="button" id="${productLaptop.laptopId}" class="addToCartButton btn w-100"><i class="bi bi-cart-plus me-2 me-lg-0" title="Add to Cart"></i><span class="d-lg-none">Add to Cart</span></button>
+                    <p class="card-text fw-bold text-success m-0 lead">₱ ${productLaptop.laptopPrice}</p>
+                    <div class="d-flex flex-column flex-lg-row justify-content-between mb-2">
+                        <p class="card-text text-success m-0 fw-bold">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </p>
+                        <p class="card-text text-success m-0 fw-bold">${productLaptop.laptopSold} <i class="bi bi-check-circle-fill text-success"></i> Sold</p>
                     </div>
-                    <div class="col-6 col-lg-2">
-                        <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn w-100"><i class="bi bi-heart me-2 me-lg-0" title="Add to Wish Lists"></i><span class="d-lg-none">Add to Wish Lists</span></button>
-                    </div>
-                </div>    
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="productDetailsModal">
-            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div id="modalBody" class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <p>Quantity: </p>
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button id="minusButton" onclick="minusQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-dash"></i></button>
-                            <span class="px-3 py-2 text-center" id="quantity"></span>
-                            <button id="addButton" onclick="addQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-plus"></i></button>
+                    <div class="row g-2">
+                        <div class="col-12 col-lg-8">
+                            <button type="button" id="${productLaptop.laptopId}" class="viewDetails btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#productDetailsModal">View Details</button>
                         </div>
-                        <button class="btn btn-success w-25">Buy</button>
+                        <div class="col-6 col-lg-2">
+                            <button type="button" id="${productLaptop.laptopId}" class="wishListButton btn w-100"><i class="bi bi-heart me-2 me-lg-0" title="Add to Wish Lists"></i><span class="d-lg-none">Add to Wish Lists</span></button>
+                        </div>
+                        <div class="col-6 col-lg-2">
+                            <button type="button" id="${productLaptop.laptopId}" class="addToCartButton btn w-100"><i class="bi bi-cart-plus me-2 me-lg-0" title="Add to Cart"></i><span class="d-lg-none">Add to Cart</span></button>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+    
+            <!-- Modal -->
+            <div class="modal fade" id="productDetailsModal">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modalBody" class="modal-body">
+    
+                        </div>
+                        <div class="modal-footer">
+                            <p>Quantity: </p>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button id="minusButton" onclick="minusQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-dash"></i></button>
+                                <span class="px-3 py-2 text-center" id="quantity"></span>
+                                <button id="addButton" onclick="addQuantity()" type="button" class="btn btn-success w-25"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <button class="btn btn-success w-25">Buy</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `;
+        `;
+    
+        laptopProductContainer.appendChild(productLaptopElement);
+    };
+}
 
-    laptopProductContainer.appendChild(productLaptopElement);
-};
+renderLaptopProducts(laptopProducts);
 
 
 // Adding Product to Product Wish List Local Storage
-for (let i = 0; i < wishListButtons.length; i++) {
-    wishListButtons[i].addEventListener("click", () => {
-
-        const laptopId = wishListButtons[i].id;
-        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
-        const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
-        
-        
-        if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-            Swal.fire({
-                title: 'Already in Wish Lists',
-                text: "This item is already added in your wish lists.",
-                icon: 'error',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Remove this item from wish lists'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: 'Removed',
-                    text: 'This is item has been removed from your wish lists.',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-                    const indexToRemove = productWishListArray.findIndex(item => item.laptopId == laptopId);
-                    if (indexToRemove !== -1) {
-                        productWishListArray.splice(indexToRemove, 1);
-                    }
-
-                    localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
-                    window.location.reload();
+function addToWishList(wishListButtons) {
+    for (let i = 0; i < wishListButtons.length; i++) {
+        wishListButtons[i].addEventListener("click", () => {
+    
+            const laptopId = wishListButtons[i].id;
+            const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+            const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
+            
+            
+            if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+                Swal.fire({
+                    title: 'Already in Wish Lists',
+                    text: "This item is already added in your wish lists.",
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Remove this item from wish lists'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Removed',
+                        text: 'This is item has been removed from your wish lists.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+                        const indexToRemove = productWishListArray.findIndex(item => item.laptopId == laptopId);
+                        if (indexToRemove !== -1) {
+                            productWishListArray.splice(indexToRemove, 1);
+                        }
+    
+                        localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                        window.location.reload();
+                    };
+                  });
+            } else {
+                Swal.fire({
+                    title: 'Add to Wish List?',
+                    text: "Are you sure to add this item to your wish lists?",
+                    iconHtml: '<i class="bi bi-heart-fill text-danger"></i>',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, add this item.'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Added to your Wish Lists.',
+                        text: 'This item is successfully added to your wish lists.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+    
+                        productWishListArray.push(selectedLaptop);
+                        localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
+                        window.location.reload();
+                    };
+                  });
+    
                 };
-              });
-        } else {
-            Swal.fire({
-                title: 'Add to Wish List?',
-                text: "Are you sure to add this item to your wish lists?",
-                iconHtml: '<i class="bi bi-heart-fill text-danger"></i>',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, add this item.'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: 'Added to your Wish Lists.',
-                    text: 'This item is successfully added to your wish lists.',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-
-                    productWishListArray.push(selectedLaptop);
-                    localStorage.setItem("ProductWishLists", JSON.stringify(productWishListArray));
-                    window.location.reload();
-                };
-              });
-
-            };
-    });
+        });
+    };
 };
+
+addToWishList(wishListButtons);
 
 
 // Adding Product to Product Cart List Local Storage
-for (let i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener("click", () => {
+function addToCart(addToCartButtons) {
+    for (let i = 0; i < addToCartButtons.length; i++) {
+        addToCartButtons[i].addEventListener("click", () => {
+    
+            const laptopId = addToCartButtons[i].id;
+            const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+            const productCartArray = JSON.parse(localStorage.getItem("ProductCartList")) || [];
+            
+            
+            if (productCartArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+                Swal.fire({
+                    title: 'Already in Cart',
+                    text: "This item is already added in your cart.",
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Remove this item from cart'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Removed',
+                        text: 'This is item has been removed from your cart.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+                        const indexToRemove = productCartArray.findIndex(item => item.laptopId == laptopId);
+                        if (indexToRemove !== -1) {
+                            productCartArray.splice(indexToRemove, 1);
+                        }
+    
+                        localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
+                        window.location.reload();
+                    };
+                  });
+            } else {
+                Swal.fire({
+                    title: 'Add to Cart?',
+                    text: "Are you sure to add this item to your cart?",
+                    iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, add this item.'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Added to your cart.',
+                        text: 'This item is successfully added to your cart.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+    
+                        productCartArray.push(selectedLaptop);
+                        localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
+                        window.location.reload();
+                    };
+                  });
+    
+                };
+        });
+    };
+};
 
+addToCart(addToCartButtons);
+
+// Checking if the Product is already added/selected/removed to the wish list.
+function addedToWishList(wishListButtons) {
+    for (let i = 0; i < wishListButtons.length; i++) {
+        const laptopId = wishListButtons[i].id;
+        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+        const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
+    
+        if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
+            wishListButtons[i].innerHTML = `<i class="bi bi-heart-fill text-danger me-2 me-lg-0"></i>`
+        } else {
+            wishListButtons[i].innerHTML = `<i class="bi bi-heart me-2 me-lg-0"></i>`
+        }
+    };
+};
+
+addedToWishList(wishListButtons);
+
+
+function addedToCart(addToCartButtons) {
+    for (let i = 0; i < addToCartButtons.length; i++) {
         const laptopId = addToCartButtons[i].id;
         const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
         const productCartArray = JSON.parse(localStorage.getItem("ProductCartList")) || [];
-        
-        
+    
         if (productCartArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-            Swal.fire({
-                title: 'Already in Cart',
-                text: "This item is already added in your cart.",
-                icon: 'error',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Remove this item from cart'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: 'Removed',
-                    text: 'This is item has been removed from your cart.',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-                    const indexToRemove = productCartArray.findIndex(item => item.laptopId == laptopId);
-                    if (indexToRemove !== -1) {
-                        productCartArray.splice(indexToRemove, 1);
-                    }
-
-                    localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
-                    window.location.reload();
-                };
-              });
+            addToCartButtons[i].innerHTML = `<i class="bi bi-cart-check-fill text-success me-2 me-lg-0"></i>`
         } else {
-            Swal.fire({
-                title: 'Add to Cart?',
-                text: "Are you sure to add this item to your cart?",
-                iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, add this item.'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: 'Added to your cart.',
-                    text: 'This item is successfully added to your cart.',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-
-                    productCartArray.push(selectedLaptop);
-                    localStorage.setItem("ProductCartList", JSON.stringify(productCartArray));
-                    window.location.reload();
-                };
-              });
-
-            };
-    });
+            addToCartButtons[i].innerHTML = `<i class="bi bi-cart-plus me-2 me-lg-0"></i>`
+        }
+    };
 };
 
-// Checking if the Product is already added/selected/removed to the wish list.
-for (let i = 0; i < wishListButtons.length; i++) {
-    const laptopId = wishListButtons[i].id;
-    const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
-    const productWishListArray = JSON.parse(localStorage.getItem("ProductWishLists")) || [];
-
-    if (productWishListArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-        wishListButtons[i].innerHTML = `<i class="bi bi-heart-fill text-danger me-2 me-lg-0"></i>`
-    } else {
-        wishListButtons[i].innerHTML = `<i class="bi bi-heart me-2 me-lg-0"></i>`
-    }
-};
-
-
-for (let i = 0; i < addToCartButtons.length; i++) {
-    const laptopId = addToCartButtons[i].id;
-    const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
-    const productCartArray = JSON.parse(localStorage.getItem("ProductCartList")) || [];
-
-    if (productCartArray.some(item => item.laptopId === selectedLaptop.laptopId)) {
-        addToCartButtons[i].innerHTML = `<i class="bi bi-cart-check-fill text-success me-2 me-lg-0"></i>`
-    } else {
-        addToCartButtons[i].innerHTML = `<i class="bi bi-cart-plus me-2 me-lg-0"></i>`
-    }
-};
+addedToCart(addToCartButtons);
 
 // Iputting the Selected/Clicked specific item from the Laptop Products
-for (let i = 0; i < viewDetails.length; i++) {
-    viewDetails[i].addEventListener("click", () => {
-        const laptopId = viewDetails[i].id;
-        const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
-
-        const modalTitle = document.getElementById("exampleModalLabel");
-        const modalBody = document.getElementById("modalBody");
-        
-        modalTitle.innerHTML = selectedLaptop.laptopName
-        modalBody.innerHTML = `
-        <div id="carouselLaptopIndicators" class="carousel slide">
-            <div id="carouselInner" class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="${selectedLaptop.laptopImgUrl}" class="img-fluid" alt="...">
+function renderModalDetails(viewDetails) {
+    for (let i = 0; i < viewDetails.length; i++) {
+        viewDetails[i].addEventListener("click", () => {
+            const laptopId = viewDetails[i].id;
+            const selectedLaptop = laptopProducts.find(laptop => laptop.laptopId == laptopId);
+    
+            const modalTitle = document.getElementById("exampleModalLabel");
+            const modalBody = document.getElementById("modalBody");
+            
+            modalTitle.innerHTML = selectedLaptop.laptopName
+            modalBody.innerHTML = `
+            <div id="carouselLaptopIndicators" class="carousel slide">
+                <div id="carouselInner" class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="${selectedLaptop.laptopImgUrl}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${selectedLaptop.laptopImages.image1}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${selectedLaptop.laptopImages.image2}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${selectedLaptop.laptopImages.image3}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${selectedLaptop.laptopImages.image4}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${selectedLaptop.laptopImages.image5}" class="img-fluid" alt="...">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="${selectedLaptop.laptopImages.image1}" class="img-fluid" alt="...">
+                <div class="carousel-indicators position-relative m-0">
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImgUrl}') no-repeat center center/cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image1}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image2}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image3}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image4}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="5" aria-label="Slide 6" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image5}') no-repeat center center/ cover;"></button>
                 </div>
-                <div class="carousel-item">
-                    <img src="${selectedLaptop.laptopImages.image2}" class="img-fluid" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="${selectedLaptop.laptopImages.image3}" class="img-fluid" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="${selectedLaptop.laptopImages.image4}" class="img-fluid" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="${selectedLaptop.laptopImages.image5}" class="img-fluid" alt="...">
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-indicators position-relative m-0">
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImgUrl}') no-repeat center center/cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image1}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image2}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image3}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image4}') no-repeat center center/ cover;"></button>
-                <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="5" aria-label="Slide 6" style="height: 80px; width: 80px; background: url('${selectedLaptop.laptopImages.image5}') no-repeat center center/ cover;"></button>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-        <hr>
-
-        <div class="col-12 col-lg-12">
-            <h3>${selectedLaptop.laptopName}</h3>
-            <h3 class="text-success fw-bold">₱ ${selectedLaptop.laptopPrice}</h3>
-            <h4><i class="bi bi-list-task me-2"></i>Descriptions</h4>
-            <h6>Quick Specs</h6>
-            <ul>
-                <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
-                <li>GPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.gpu}</span></li>
-                <li>Memory: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.memory}</span></li>
-                <li>CPU Brand Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpuBrandModel}</span></li>
-                <li>Graphics Card Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.graphicsCardModel}</span></li>
-                <li>Model Number: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.modelNumber}</span></li>
-                <li>Operating System: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.operatingSystem}</span></li>
-                <li>Brand Name: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.brandName}</span></li>
-                <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
-                <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
-            </ul>
-        </div> 
-        `
-    });
+    
+            <hr>
+    
+            <div class="col-12 col-lg-12">
+                <h3>${selectedLaptop.laptopName}</h3>
+                <h3 class="text-success fw-bold">₱ ${selectedLaptop.laptopPrice}</h3>
+                <p>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </p>
+                <h4><i class="bi bi-list-task me-2"></i>Descriptions</h4>
+                <h6>Quick Specs</h6>
+                <ul>
+                    <li>CPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpu}</span></li>
+                    <li>GPU: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.gpu}</span></li>
+                    <li>Memory: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.memory}</span></li>
+                    <li>CPU Brand Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.cpuBrandModel}</span></li>
+                    <li>Graphics Card Model: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.graphicsCardModel}</span></li>
+                    <li>Model Number: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.modelNumber}</span></li>
+                    <li>Operating System: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.operatingSystem}</span></li>
+                    <li>Brand Name: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.brandName}</span></li>
+                    <li>Type: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.type}</span></li>
+                    <li>Series: <span class="fw-bold text-primary">${selectedLaptop.laptopSpecs.series}</span></li>
+                </ul>
+            </div> 
+            `
+        });
+    };
 };
+
+renderModalDetails(viewDetails);
 
 // Displaying the Filter Product Title and its Options to its specified parent element
-for (let i = 0; i < filterProducts.length; i++) {
-    const filterProduct = filterProducts[i];
-    const filterProductElement = document.createElement("div");
-    filterProductElement.className = "pb-3"
-    filterProductElement.innerHTML = `
-        <h6 class="fw-bold">${filterProduct.filterTitle}</h6>
-    `;
-
-    for (const optionKey in filterProduct.filterOptions) {
-        const optionValue = filterProduct.filterOptions[optionKey];
-        const optionElement = document.createElement("div");
-        optionElement.innerHTML = `
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault${i}${optionKey}">
-                <label class="form-check-label" for="flexCheckDefault${i}${optionKey}">
-                    ${optionValue}
-                </label>
-            </div>
+function renderFilterDetails(filterProducts) {
+    for (let i = 0; i < filterProducts.length; i++) {
+        const filterProduct = filterProducts[i];
+        const filterProductElement = document.createElement("div");
+        filterProductElement.className = "pb-3"
+        filterProductElement.innerHTML = `
+            <h6 class="fw-bold">${filterProduct.filterTitle}</h6>
         `;
-        filterProductElement.appendChild(optionElement);
+    
+        for (const optionKey in filterProduct.filterOptions) {
+            const optionValue = filterProduct.filterOptions[optionKey];
+            const optionElement = document.createElement("div");
+            optionElement.innerHTML = `
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault${i}${optionKey}">
+                    <label class="form-check-label" for="flexCheckDefault${i}${optionKey}">
+                        ${optionValue}
+                    </label>
+                </div>
+            `;
+            filterProductElement.appendChild(optionElement);
+        };
+    
+        filterContainer.appendChild(filterProductElement);
     };
+}
 
-    filterContainer.appendChild(filterProductElement);
-};
-
+renderFilterDetails(filterProducts);
 
 // Quantity Button Functionalities: Add and Minus Quantity
 const productQuantity = document.getElementById("quantity");

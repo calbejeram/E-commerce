@@ -11,6 +11,20 @@ const searchBoxInputMobile = document.getElementById("searchBoxInputMobile");
 const searchButtonLarge = document.getElementById("searchButtonLarge");
 const searchBoxInputLarge = document.getElementById("searchBoxInputLarge");
 const cartButtonLarge = document.getElementById("cartButtonLarge");
+const wishListCountMobile = document.getElementById("wishListCountMobile");
+const wishListCountLarge = document.getElementById("wishListCountLarge");
+const cartCountMobile = document.getElementById("cartCountMobile");
+const cartCountLarge = document.getElementById("cartCountLarge");
+
+const wishLists = localStorage.getItem("ProductWishLists") ? JSON.parse(localStorage.getItem("ProductWishLists")) : []
+wishListCountMobile.innerHTML = wishLists.length;
+wishListCountLarge.innerHTML = wishLists.length;
+
+// Cart List Count
+const cart = localStorage.getItem("ProductCartList") ? JSON.parse(localStorage.getItem("ProductCartList")) : []
+cartCountMobile.innerHTML = cart.length;
+cartCountLarge.innerHTML = cart.length;
+
 
 // FUNCTIONS
 
