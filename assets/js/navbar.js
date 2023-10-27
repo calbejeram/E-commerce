@@ -16,12 +16,12 @@ const wishListCountLarge = document.getElementById("wishListCountLarge");
 const cartCountMobile = document.getElementById("cartCountMobile");
 const cartCountLarge = document.getElementById("cartCountLarge");
 
-const wishLists = localStorage.getItem("ProductWishLists") ? JSON.parse(localStorage.getItem("ProductWishLists")) : []
+const wishLists = localStorage.getItem("Product Wish Lists") ? JSON.parse(localStorage.getItem("Product Wish Lists")) : []
 wishListCountMobile.innerHTML = wishLists.length;
 wishListCountLarge.innerHTML = wishLists.length;
 
 // Cart List Count
-const cart = localStorage.getItem("ProductCartList") ? JSON.parse(localStorage.getItem("ProductCartList")) : []
+const cart = localStorage.getItem("Product Cart Lists") ? JSON.parse(localStorage.getItem("Product Cart Lists")) : []
 cartCountMobile.innerHTML = cart.length;
 cartCountLarge.innerHTML = cart.length;
 
