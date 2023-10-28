@@ -38,7 +38,7 @@ cartCountLarge.innerHTML = cart.length;
 // FUNCTION
 
 // Setting Active class and Sorting Products
-productSorting(productLaptopData);
+productSorting(productLaptopData, productLaptopData, laptopProductContainer);
 
 // Product Card and Product Pop Up Modal
 renderProductItems(productLaptopData, laptopProductContainer);
