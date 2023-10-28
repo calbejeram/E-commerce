@@ -7,35 +7,24 @@ import { addedToWishList } from "./functions/checkingIfAddedToWishLists.js";
 import { addedToCart } from "./functions/checkingIfAddedToCart.js";
 import { renderProductDetailsModal } from "./functions/renderProductModalDetails.js";
 import { productSorting } from "./functions/productSorting.js";
+import { wishListCount } from "./functions/wishListCount.js";
+import { cartCount } from "./functions/cartCount.js";
 
 // VARIABLE
-const laptopProductContainer = document.getElementById("laptopProductContainer"); //Done
-const filterContainerLarge = document.getElementById("filterContainerLarge"); //Done
-const filterContainerMobile = document.getElementById("filterContainerMobile"); //Done
-const wishListButtons = document.getElementsByClassName("wishListButton"); //Done
-const addToCartButtons = document.getElementsByClassName("addToCartButton"); //Done
-const viewDetails = document.getElementsByClassName("viewDetails"); //Done
-const wishListCountMobile = document.getElementById("wishListCountMobile");
-const wishListCountLarge = document.getElementById("wishListCountLarge");
-const cartCountMobile = document.getElementById("cartCountMobile");
-const cartCountLarge = document.getElementById("cartCountLarge");
-
-
-
-// Wish List Count
-const wishLists = localStorage.getItem("Product Wish Lists") ? JSON.parse(localStorage.getItem("Product Wish Lists")) : []
-wishListCountMobile.innerHTML = wishLists.length;
-wishListCountLarge.innerHTML = wishLists.length;
-
-// Cart List Count
-const cart = localStorage.getItem("Product Cart Lists") ? JSON.parse(localStorage.getItem("Product Cart Lists")) : []
-cartCountMobile.innerHTML = cart.length;
-cartCountLarge.innerHTML = cart.length;
-
-
-
+const laptopProductContainer = document.getElementById("laptopProductContainer");
+const filterContainerLarge = document.getElementById("filterContainerLarge");
+const filterContainerMobile = document.getElementById("filterContainerMobile");
+const wishListButtons = document.getElementsByClassName("wishListButton");
+const addToCartButtons = document.getElementsByClassName("addToCartButton");
+const viewDetails = document.getElementsByClassName("viewDetails");
 
 // FUNCTION
+
+// Wish List Count
+wishListCount();
+
+// Cart List Count
+cartCount();
 
 // Setting Active class and Sorting Products
 productSorting(productLaptopData, productLaptopData, laptopProductContainer);

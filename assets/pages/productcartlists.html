@@ -16,7 +16,7 @@
     <!-- Machenike Icon -->
     <link rel="icon" href="/assets/static/images/machenike-logo.svg" type="image/x-icon">
     <!-- Machenike Document Title -->
-    <title>Monitors | Machenike</title>
+    <title>Cart | Machenike</title>
 </head>
 <body>
     <!-- Preloader -->
@@ -60,10 +60,10 @@
                   </li>
                   <!-- Dropdown 2 -->
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Products</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Products</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item navbar-link" href="/assets/pages/products/laptops.html">Laptops</a></li>
-                        <li><a class="dropdown-item navbar-link active" href="/assets/pages/products/monitors.html">Monitors</a></li>
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/monitors.html">Monitors</a></li>
                         <li><a class="dropdown-item navbar-link" href="/assets/pages/products/desktops.html">Desktops</a></li>
                         <li><a class="dropdown-item navbar-link" href="/assets/pages/products/accessories.html">Accessories</a></li>
                         <li><a class="dropdown-item navbar-link" href="/assets/pages/products/mice.html">Mice</a></li>
@@ -85,7 +85,7 @@
                           
                       </span>
                     </a>
-                    <a href="/assets/pages/productcartlists.html" id="cartButtonMobile" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                    <a href="/assets/pages/productcartlists.html" id="cartButtonMobile" type="button" class="nav-button btn bg-primary position-relative rounded-circle">
                       <i class="bi bi-cart3 text-white"></i>
                       <span id="cartCountMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                           
@@ -113,12 +113,12 @@
                       
                   </span>
                 </a>
-                <a href="/assets/pages/productcartlists.html" id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                <a href="/assets/pages/productcartlists.html" id="cartButtonLarge" type="button" class="nav-button btn bg-primary position-relative rounded-circle">
                     <i class="bi bi-cart3 text-white"></i>
                     <span id="cartCountLarge" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                         
                     </span>
-                  </a>
+                </a>
                 <button id="userButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
               </div>
             </div>
@@ -132,7 +132,8 @@
             <div class="row">
               <div class="col-12 col-lg-12">
                 <div class="page-title">
-                  <h2 class="display-5 fw-bold">Monitors</h2>
+                  <h2 class="display-5 fw-bold">Cart (<span id="cartListsCount" class="text-danger fw-bold"></span>)</h2>
+                  <p>There are (<span id="cartListsTextCount" class="text-danger fw-bold"></span>) item/s in your cart.</p>
                 </div>
               </div>
               <div class="col-12 col-lg-12">
@@ -140,8 +141,7 @@
                   <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="/#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="/#products-series">Products</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Monitors</li>
+                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                   </nav>
                 </div>
@@ -152,33 +152,14 @@
         <section id="filter-products-mobile">
           <div class="container">
             <div class="row mb-4">
-              <!-- Filter -->
-              <div class="col-6 col-lg-6">
-                <div class="filter-mobile">
-                  <button class="btn btn-primary d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Filter
-                    <i class="bi bi-filter"></i>
-                  </button>
-                  <h5 class="d-none d-lg-block">Filter Products <i class="bi bi-filter"></i> </h5>
-                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filter Products</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div id="filterContainerMobile" class="offcanvas-body">
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
               <!-- Sort Products -->
-              <div class="col-6 col-lg-6 d-flex align-items-center justify-content-end">
+              <div class="col-12 col-lg-12 d-flex align-items-center justify-content-end">
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Sort By:
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item btn" id="bestSeller">Best Seller</a></li>
+                    <li><a class="dropdown-item btn" id="dateAdded">Date Added</a></li>
                     <li><a class="dropdown-item btn" id="priceLowToHigh">Price Low to High</a></li>
                     <li><a class="dropdown-item btn" id="priceHighToLow">Price High to Low</a></li>
                   </ul>
@@ -188,16 +169,12 @@
           </div>
         </section>
 
-        <section id="filter-products-large">
+        <section>
           <div class="container">
             <div class="row">
-              <div class="col-12 col-lg-3 d-none d-lg-block">
-                  <div id="filterContainerLarge">
-                  </div>
-              </div>
-              <div class="col-12 col-lg-9">
-                  <div id="monitorProductContainer" class="row mb-lg-3">
-                    <!-- Product Container -->
+              <div class="col-12 col-lg-12">
+                  <div id="productCartListsContainer" class="row mb-lg-3">
+                    <!-- Cart Lists Container -->
                   </div>
               </div>
             </div>
@@ -261,7 +238,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <!-- <script src="/assets/js/navbar.js"></script> -->
-    <script type="module" src="/assets/js/monitorsproduct.js"></script>
+    <script type="module" src="/assets/js/displaycartlists.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/backToTop.js"></script>
     <script src="/assets/js/preLoader.js"></script>

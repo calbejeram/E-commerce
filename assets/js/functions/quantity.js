@@ -1,7 +1,6 @@
 // FUNCTIONS
 // Adding and Decreasing the product Quantity
 export function quantity() {
-    // console.log("Hello")
     document.addEventListener("DOMContentLoaded", function() {
         let quantity = 1; 
         const productQuantity = document.getElementById("quantity");

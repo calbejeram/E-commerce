@@ -16,16 +16,16 @@ export function renderProductItems(productData, productContainer) {
                 <img src="${productItem.productImgUrl}" class="card-img-top" alt="${productItem.productName}">
                 <div class="card-body px-3">
                     <p class="card-text m-0 fw-bold">${productItem.productName}</p>
-                    <p class="card-text fw-bold text-success m-0 lead">₱ ${productItem.productPrice}</p>
+                    <p class="card-text fw-bold text-success m-0">₱ ${productItem.productPrice}</p>
                     <div class="d-flex flex-column flex-lg-row justify-content-between mb-2">
                         <p class="card-text text-success m-0 fw-bold">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem"></i>
+                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem"></i>
+                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem"></i>
+                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem"></i>
+                            <i class="bi bi-star-fill text-warning" style="font-size: 0.7rem"></i>
                         </p>
-                        <p class="card-text text-success m-0 fw-bold">${productItem.productSold} <i class="bi bi-check-circle-fill text-success"></i> Sold</p>
+                        <p class="card-text text-success m-0">${productItem.productSold} <i class="bi bi-check-circle-fill text-success"></i> Sold</p>
                     </div>
                     <div class="row g-2">
                         <div class="col-12 col-lg-8">

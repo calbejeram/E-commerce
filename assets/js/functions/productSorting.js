@@ -1,4 +1,3 @@
-// import { productLaptopData } from "../instances/laptopdata.js";
 import { renderProductItems } from "./renderProductItem.js";
 import { addProductToWishList } from "./addingProductToWishLists.js";
 import { addProductToCart } from "./addingProductToCart.js";
@@ -9,10 +8,9 @@ import { quantity } from "./quantity.js";
 
 // VARIABLES
 const sort = document.querySelectorAll("#bestSeller, #priceLowToHigh, #priceHighToLow");
-const laptopProductContainer = document.getElementById("laptopProductContainer"); //Done
-const wishListButtons = document.getElementsByClassName("wishListButton"); //Done
-const addToCartButtons = document.getElementsByClassName("addToCartButton"); //Done
-const viewDetails = document.getElementsByClassName("viewDetails"); //Done
+const wishListButtons = document.getElementsByClassName("wishListButton");
+const addToCartButtons = document.getElementsByClassName("addToCartButton");
+const viewDetails = document.getElementsByClassName("viewDetails");
 
 // FUNCTIONS
 // Sorting product items by Best Seller/Price Low to High/Price High to Low
