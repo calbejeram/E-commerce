@@ -29,19 +29,23 @@ const features = [
 // FUNCTIONS
 
 // Appending Features
-for (let i = 0; i < features.length; i++) {
-    const feature = features[i];
-
-    const featureElement = document.createElement("div");
-    featureElement.className = "col-6 col-lg-3 p-3 border border-5 bg-info bg-opacity-25";
-
-    featureElement.innerHTML = `
-    <div>
-        <img src="${feature.featureImgUrl}" alt="${feature} Image">
-        <h5>${feature.featureTitle}</h5>
-        <p style: font-size: 10px;>${feature.featureText}</p>
-    </div>
-    `;
-
-    featuresContainer.appendChild(featureElement);
+function appendFeature() {
+    for (let i = 0; i < features.length; i++) {
+        const feature = features[i];
+    
+        const featureElement = document.createElement("div");
+        featureElement.className = "col-6 col-lg-3 p-3 border border-5 bg-info bg-opacity-25";
+    
+        featureElement.innerHTML = `
+        <div>
+            <img src="${feature.featureImgUrl}" alt="${feature} Image">
+            <h5>${feature.featureTitle}</h5>
+            <p style: font-size: 10px;>${feature.featureText}</p>
+        </div>
+        `;
+    
+        featuresContainer.appendChild(featureElement);
+    };
 };
+
+appendFeature();

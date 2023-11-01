@@ -44,24 +44,28 @@ const productSeries = [
 // FUNCTIONS
 
 // Appening Product Series to its parent element
-for (let i = 0; i < productSeries.length; i++) {
-    const product = productSeries[i];
-
-    const productElement = document.createElement("div");
-    productElement.className = "col-6 col-lg-4 my-2";
-
-    productElement.innerHTML = `
-    <div class="card bg-secondary bg-opacity-25">
-        <img src="${product.productImgUrl}" class="card-img-top" alt="${product.productTitle} Image">
-        <div class="card-body bg-white bg-opacity-50">
-            ${product.productIcon}
-            <a class="icon-link text-black fw-bold" href="/assets/pages/products/${product.productPageTitle}.html">
-            ${product.productTitle}
-                <i class="bi bi-arrow-right"></i>
-            </a>
+function appending() {
+    for (let i = 0; i < productSeries.length; i++) {
+        const product = productSeries[i];
+    
+        const productElement = document.createElement("div");
+        productElement.className = "col-6 col-lg-4 my-2";
+    
+        productElement.innerHTML = `
+        <div class="card bg-secondary bg-opacity-25">
+            <img src="${product.productImgUrl}" class="card-img-top" alt="${product.productTitle} Image">
+            <div class="card-body bg-white bg-opacity-50">
+                ${product.productIcon}
+                <a class="icon-link text-black fw-bold" href="/assets/pages/products/${product.productPageTitle}.html">
+                ${product.productTitle}
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
         </div>
-    </div>
-    `;
-
-    productSeriesContainer.appendChild(productElement);
+        `;
+    
+        productSeriesContainer.appendChild(productElement);
+    };
 };
+
+appending();

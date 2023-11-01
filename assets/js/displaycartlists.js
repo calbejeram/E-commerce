@@ -1,11 +1,26 @@
 import { cartCount } from "./functions/cartCount.js";
 import { wishListCount } from "./functions/wishListCount.js";
+import { addProductToWishList } from "./functions/addingProductToWishLists.js";
+import { productAccessoriesData } from "./instances/accessoriesdata.js";
+import { productLaptopData } from "./instances/laptopdata.js";
+import { productDesktopsData } from "./instances/desktopdata.js";
+import { productKeyboardData } from "./instances/keyboardsdata.js";
+import { productMiceData } from "./instances/micedata.js";
+import { productMonitorData } from "./instances/monitordata.js"
 
 // VARIABLES
 const productCartListsContainer = document.getElementById("productCartListsContainer");
 const cartLists = localStorage.getItem("Product Cart Lists") ? JSON.parse(localStorage.getItem("Product Cart Lists")) : []
 const cartListsCount = document.getElementById("cartListsCount");
 const cartListsTextCount = document.getElementById("cartListsTextCount");
+// const dataSet = [
+//     productAccessoriesData,
+//     productDesktopsData,
+//     productLaptopData,
+//     productKeyboardData,
+//     productMiceData,
+//     productMonitorData
+// ];
 
 
 cartListsCount.innerHTML = cartLists.length;
@@ -16,6 +31,9 @@ wishListCount();
 
 // Cart List Count
 cartCount();
+
+// Adding product to wishlist
+
 
 // FUNCTIONS
 // Rendering Product Items Wish Lists to Page
@@ -28,8 +46,8 @@ function renderProductItemsCartLists() {
         productCartListItemContainer.innerHTML = `
         <div class="d-flex align-items-center justify-content-center border rounded-3 p-5">
             <div class="text-center">
-                <i class="bi bi-heartbreak-fill text-danger" style="font-size: 3rem"></i>
-                <h5 class="fw-bold">No item in your Cart</h5>
+                <i class="bi bi-cart-x-fill text-success" style="font-size: 3rem"></i>
+                <h5 class="fw-bold">No items in your Cart</h5>
                 <p>Add an item to your cart and they will show up here.</p>
             </div>
         </div>
@@ -58,7 +76,7 @@ function renderProductItemsCartLists() {
                         </div>
                     </div>
                 </div>
-                `
+                `;
     
             productCartListsContainer.appendChild(productCartListItemContainer);
         };

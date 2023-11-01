@@ -3,9 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- General/Custom CSS -->
+    <link rel="stylesheet" href="/assets/static/css/styles.css">
+    <!-- Sweet Alert 2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Fontawesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Machenike Icon -->
+    <link rel="icon" href="/assets/static/images/machenike-logo.svg" type="image/x-icon">
+    <!-- Machenike Document Title -->
+    <title>Keyboards | Machenike</title>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preLoader" class="pre-loader">
+        <div id="page">
+            <div id="container">
+                <div id="ring"></div>
+                <div id="ring"></div>
+                <div id="ring"></div>
+                <div id="ring"></div>
+                <div id="h3">loading</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="hero-scroll">
+        <nav class="navbar navbar-expand-lg bg-secondary position-fixed z-1 w-100" id="navbar">
+            <div class="container">
+                <a class="navbar-brand text-info fw-bold" href="#">
+                    <img src="/assets/static/images/machenike-logo.svg" alt="Machenike Logo">
+                    <span>Machenike</span>
+                </a>
+              <button id="navbarButtonToggler" class="btn navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav ms-0 ms-lg-5 nav-pills d-flex flex-column flex-lg-row">
+                  <li class="nav-item">
+                    <a class="nav-link navbar-link" href="/#">Home</a>
+                  </li>
+                  <!-- Dropdown 1 -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Overview</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item navbar-link" href="/#features">Features</a></li>
+                      <li><a class="dropdown-item navbar-link" href="/#hottest-laptops">Hot Products</a></li>
+                      <li><a class="dropdown-item navbar-link" href="/#products-series">Product Series</a></li>
+                      <li><a class="dropdown-item navbar-link" href="/#branding-video">Branding Video</a></li>
+                    </ul>
+                  </li>
+                  <!-- Dropdown 2 -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/laptops.html">Laptops</a></li>
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/monitors.html">Monitors</a></li>
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/desktops.html">Desktops</a></li>
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/accessories.html">Accessories</a></li>
+                        <li><a class="dropdown-item navbar-link" href="/assets/pages/products/mice.html">Mice</a></li>
+                        <li><a class="dropdown-item navbar-link active" href="/assets/pages/products/keyboards.html">Keyboards</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link navbar-link" href="#">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link navbar-link" href="#">Contact Us</a>
+                  </li>
+                  <!-- Mobile -->
+                  <div class="shop d-block d-lg-none mb-2 mb-lg-0">
+                    <button id="searchButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white"></i></button>
+                    <a href="/assets/pages/productwishlists.html" id="wishListButtonMobile" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                      <i class="bi bi-bag-heart text-white"></i>
+                      <span id="wishListCountMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                          
+                      </span>
+                    </a>
+                    <a href="/assets/pages/productcartlists.html" id="cartButtonMobile" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                      <i class="bi bi-cart3 text-white"></i>
+                      <span id="cartCountMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                          
+                      </span>
+                    </a>
+                    <button id="userButtonMobile" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
+                  </div>
+                  <!-- Search -->
+                  <div class="search-box d-block d-lg-none">
+                    <input id="searchBoxInputMobile" class="form-control d-none" type="text" placeholder="Search Keyword Here">
+                  </div>
+                  <div class="search-box d-none d-lg-flex mb-2 mb-lg-0 me-3">
+                    <form action="#">
+                        <input id="searchBoxInputLarge" class="form-control d-none" type="text" placeholder="Search Keyword Here">
+                    </form>
+                </div>
+                </ul>
+                </div>
+                <!-- Large -->
+              <div class="shop d-none d-lg-block">
+                <button id="searchButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-search text-white" title="Search"></i></button>
+                <a href="/assets/pages/productwishlists.html" id="wishListButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                  <i class="bi bi-bag-heart text-white"></i>
+                  <span id="wishListCountLarge" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                      
+                  </span>
+                </a>
+                <a href="/assets/pages/productcartlists.html" id="cartButtonLarge" type="button" class="nav-button btn bg-white bg-opacity-25 position-relative rounded-circle">
+                    <i class="bi bi-cart3 text-white"></i>
+                    <span id="cartCountLarge" class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                        
+                    </span>
+                  </a>
+                <button id="userButtonLarge" class="nav-button btn bg-white bg-opacity-25 rounded-circle"><i class="bi bi-person-circle text-white" title="Login"></i></i></button>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="py-5">
+        <section id="bread-crumb" class="pt-5 pb-3">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-lg-12">
+                <div class="page-title">
+                  <h2 class="display-5 fw-bold">Keyboards</h2>
+                </div>
+              </div>
+              <div class="col-12 col-lg-12">
+                <div class="bread-crumbs">
+                  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/#">Home</a></li>
+                      <li class="breadcrumb-item"><a href="/#products-series">Products</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Keyboards</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+          </div>
+        </section>
+
+        <section id="filter-products-mobile">
+          <div class="container">
+            <div class="row mb-4">
+              <!-- Filter -->
+              <div class="col-6 col-lg-6">
+                <div class="filter-mobile">
+                  <button class="btn btn-primary d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Filter
+                    <i class="bi bi-filter"></i>
+                  </button>
+                  <h5 class="d-none d-lg-block">Filter Products <i class="bi bi-filter"></i> </h5>
+                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filter Products</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div id="filterContainerMobile" class="offcanvas-body">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Sort Products -->
+              <div class="col-6 col-lg-6 d-flex align-items-center justify-content-end">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort By:
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btn" id="bestSeller">Best Seller</a></li>
+                    <li><a class="dropdown-item btn" id="priceLowToHigh">Price Low to High</a></li>
+                    <li><a class="dropdown-item btn" id="priceHighToLow">Price High to Low</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="filter-products-large">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-lg-3 d-none d-lg-block">
+                  <div id="filterContainerLarge">
+                  </div>
+              </div>
+              <div class="col-12 col-lg-9">
+                  <div id="keyboardsProductContainer" class="row mb-lg-3">
+                    <!-- Product Container -->
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <section id="footer" class="mt-5">
+            <div class="container p-3">
+                <div class="footer-text my-3">
+                    <h4 class="text-black">For Inquiries, Contact MachenikePH at (02) 8-555-2300</h4>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Machenike INC.</h5>
+                        <div id="machenikeInc" class="quick-links d-flex text-start text-white flex-column">
+                            
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Support</h5>
+                        <div id="support" class="quick-links d-flex text-start text-white flex-column">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Account</h5>
+                        <div id="accounts" class="quick-links d-flex text-start text-white flex-column">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 my-lg-0">
+                        <h5 class="text-black fw-bold">Accepted Payments</h5>
+                        <div id="payments" class="quick-links d-flex flex-wrap">
+                        </div>
+                    </div>  
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <p class="text-black fw-bold text-center m-0">Allrights reserved @ MachenikePH 2023</p>
+                        <img src="/assets/static/images/machenike-logo.svg" class="brand-logo" alt="Machenike Brand">
+                    </div>
+                    <div class="quick-links d-flex text-start text-white">
+                        <a href="https://facebook.com" target="_blank" class="pe-3"><i class="bi bi-facebook" style="font-size: 1.3rem;" title="Facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="pe-3"><i class="bi bi-instagram" style="font-size: 1.3rem;" title="Instagram"></i></a>
+                        <a href="https://youtube.com" target="_blank" class="pe-3"><i class="bi bi-youtube" style="font-size: 1.3rem;" title="Youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <a id="backToTopBtn" class="btn btn-primary backToTopBtn px-3 d-none" href="#" title="Back To Top">
+      <i class="bi bi-arrow-up-short" style="font-size: 1.5rem;"></i>
+    </a>
     
+
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <!-- <script src="/assets/js/navbar.js"></script> -->
+    <script type="module" src="/assets/js/keyboardsproduct.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/backToTop.js"></script>
+    <script src="/assets/js/preLoader.js"></script>
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

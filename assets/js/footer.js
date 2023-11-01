@@ -62,34 +62,38 @@ const column4 = [
 // FUNCTIONS
 
 // Appending Links to footer section
-for (let i = 0; i < column1.length; i++) {
-    const anchor = document.createElement("a");
-    anchor.href = "#";
-    anchor.innerHTML = column1[i];
-
-    machenikeInc.appendChild(anchor);
+function appenLinksFooter() {
+    for (let i = 0; i < column1.length; i++) {
+        const anchor = document.createElement("a");
+        anchor.href = "#";
+        anchor.innerHTML = column1[i];
+    
+        machenikeInc.appendChild(anchor);
+    };
+    
+    for (let i = 0; i < column2.length; i++) {
+        const anchor = document.createElement("a");
+        anchor.href = "#";
+        anchor.innerHTML = column2[i];
+    
+        support.appendChild(anchor);
+    };
+    
+    for (let i = 0; i < column3.length; i++) {
+        const anchor = document.createElement("a");
+        anchor.href = "#";
+        anchor.innerHTML = column3[i];
+    
+        accounts.appendChild(anchor);
+    };
+    
+    for (let i = 0; i < column4.length; i++) {
+        const anchor = document.createElement("a");
+        anchor.innerHTML = `<img width="48" height="48" src="${column4[i].imgUrl}" alt="${column4[i].paymentName.toLowerCase()}" title="${column4[i].paymentName}"/>`
+        anchor.href = `https://${column4[i].paymentName.toLowerCase()}.com`;
+    
+        payments.appendChild(anchor);
+    };
 };
 
-for (let i = 0; i < column2.length; i++) {
-    const anchor = document.createElement("a");
-    anchor.href = "#";
-    anchor.innerHTML = column2[i];
-
-    support.appendChild(anchor);
-};
-
-for (let i = 0; i < column3.length; i++) {
-    const anchor = document.createElement("a");
-    anchor.href = "#";
-    anchor.innerHTML = column3[i];
-
-    accounts.appendChild(anchor);
-};
-
-for (let i = 0; i < column4.length; i++) {
-    const anchor = document.createElement("a");
-    anchor.innerHTML = `<img width="48" height="48" src="${column4[i].imgUrl}" alt="${column4[i].paymentName.toLowerCase()}" title="${column4[i].paymentName}"/>`
-    anchor.href = `https://${column4[i].paymentName.toLowerCase()}.com`;
-
-    payments.appendChild(anchor);
-};
+appenLinksFooter();

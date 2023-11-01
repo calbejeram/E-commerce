@@ -29,62 +29,74 @@ cartCountLarge.innerHTML = cart.length;
 // FUNCTIONS
 
 // Navbar Scroll
-window.addEventListener("scroll", () => {
-    let scroll = window.scrollY;
-
-    scroll > 80 ? navbar.classList.add("bg-secondary") : navbar.classList.remove("bg-secondary");
-
-    if (scroll <= 1100) {
-        showBtnHottestProduct.innerText = "See More";
-        hottestProductsContainerr.style.height = "75vh";
-        hottestProductsContainerr.style.overflow = "hidden";
-        hottestProductsContainerr.style.position = "relative";
-    }
-});
-
-
-// Navbar Links
-navbarLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navbarBtnToggler.classList.contains("collapsed") ? navbarBtnToggler.classList.remove("collapsed") : navbarBtnToggler.classList.add("collapsed");
-        navbarNav.classList.contains("show") ? navbarNav.classList.remove("show") : navbarNav.classList.add("show");
-    });
-});
-
-
-const setActive = (id) => {
-    buttonsRight.forEach(button => {
-        button === id ? button.className = "nav-button btn btn-primary rounded-circle position-relative" : button.className = "nav-button btn bg-white bg-opacity-25 rounded-circle position-relative"
+function navbarScroll() {
+    window.addEventListener("scroll", () => {
+        let scroll = window.scrollY;
+    
+        scroll > 80 ? navbar.classList.add("bg-secondary") : navbar.classList.remove("bg-secondary");
+    
+        if (scroll <= 1100) {
+            showBtnHottestProduct.innerText = "See More";
+            hottestProductsContainerr.style.height = "75vh";
+            hottestProductsContainerr.style.overflow = "hidden";
+            hottestProductsContainerr.style.position = "relative";
+        }
     });
 };
 
-buttonsRight.forEach(button => {
-    button.addEventListener("click", () => {
-        setActive(button);
-    })
-});
+navbarScroll();
+
+
+// Navbar Links
+function navbarLinksFunc() {
+    navbarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navbarBtnToggler.classList.contains("collapsed") ? navbarBtnToggler.classList.remove("collapsed") : navbarBtnToggler.classList.add("collapsed");
+            navbarNav.classList.contains("show") ? navbarNav.classList.remove("show") : navbarNav.classList.add("show");
+        });
+    });
+    
+    
+    const setActive = (id) => {
+        buttonsRight.forEach(button => {
+            button === id ? button.className = "nav-button btn btn-primary rounded-circle position-relative" : button.className = "nav-button btn bg-white bg-opacity-25 rounded-circle position-relative"
+        });
+    };
+    
+    buttonsRight.forEach(button => {
+        button.addEventListener("click", () => {
+            setActive(button);
+        })
+    });
+};
+
+navbarLinksFunc();
 
 // // Search Button
-searchButtonLarge.addEventListener("click", () => {
-    if (searchBoxInputLarge.classList.contains("d-none")) {
-        searchBoxInputLarge.classList.remove("d-none");
-        searchBoxInputLarge.classList.add("d-block");
-    } else {
-        searchBoxInputLarge.classList.remove("d-block");
-        searchBoxInputLarge.classList.add("d-none");
-        searchButtonLarge.className = "nav-button btn bg-white bg-opacity-25 rounded-circle"
-        searchBoxInputLarge.value = "";
-    }
-});
+function navbarButtons() {
+    searchButtonLarge.addEventListener("click", () => {
+        if (searchBoxInputLarge.classList.contains("d-none")) {
+            searchBoxInputLarge.classList.remove("d-none");
+            searchBoxInputLarge.classList.add("d-block");
+        } else {
+            searchBoxInputLarge.classList.remove("d-block");
+            searchBoxInputLarge.classList.add("d-none");
+            searchButtonLarge.className = "nav-button btn bg-white bg-opacity-25 rounded-circle"
+            searchBoxInputLarge.value = "";
+        }
+    });
+    
+    searchButtonMobile.addEventListener("click", () => {
+        if (searchBoxInputMobile.classList.contains("d-none")) {
+            searchBoxInputMobile.classList.remove("d-none");
+            searchBoxInputMobile.classList.add("d-block");
+        } else {
+            searchBoxInputMobile.classList.remove("d-block");
+            searchBoxInputMobile.classList.add("d-none");
+            searchButtonMobile.className = "nav-button btn bg-white bg-opacity-25 rounded-circle"
+            searchBoxInputMobile.value = "";
+        }
+    });
+};
 
-searchButtonMobile.addEventListener("click", () => {
-    if (searchBoxInputMobile.classList.contains("d-none")) {
-        searchBoxInputMobile.classList.remove("d-none");
-        searchBoxInputMobile.classList.add("d-block");
-    } else {
-        searchBoxInputMobile.classList.remove("d-block");
-        searchBoxInputMobile.classList.add("d-none");
-        searchButtonMobile.className = "nav-button btn bg-white bg-opacity-25 rounded-circle"
-        searchBoxInputMobile.value = "";
-    }
-});
+navbarButtons();
