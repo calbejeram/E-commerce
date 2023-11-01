@@ -36,7 +36,7 @@ function navbarScroll() {
         scroll > 80 ? navbar.classList.add("bg-secondary") : navbar.classList.remove("bg-secondary");
     
         if (scroll <= 1100) {
-            showBtnHottestProduct.innerText = "See More";
+            showBtnHottestProduct.innerHTML = `<p class="m-0">See More <i class="bi bi-caret-down-fill"></i></p>`;
             hottestProductsContainerr.style.height = "75vh";
             hottestProductsContainerr.style.overflow = "hidden";
             hottestProductsContainerr.style.position = "relative";
