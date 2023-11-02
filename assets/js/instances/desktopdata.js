@@ -16,6 +16,7 @@ export const productDesktopsData = [
         productPrice: "76,000.00",
         productRating: "5",
         productSold: "12",
+        productStocks: "15",
         productSpecs: {
             brandName: "Machreator",
             type: "Desktop",
@@ -41,6 +42,7 @@ export const productDesktopsData = [
         productPrice: "56,000.00",
         productRating: "5",
         productSold: "18",
+        productStocks: "22",
         productSpecs: {
             brandName: "Machenike",
             type: "Desktop",
@@ -66,6 +68,7 @@ export const productDesktopsData = [
         productPrice: "68,000.00",
         productRating: "5",
         productSold: "21",
+        productStocks: "31",
         productSpecs: {
             brandName: "Machreator",
             type: "Desktop",

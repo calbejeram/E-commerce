@@ -52,8 +52,7 @@ export function addProductToWishList(wishListButtons, productData) {
                         showConfirmButton: false,
                         timer: 1500
                         });
-    
-                        console.log(selectedProductItem.addProductDate)
+                        
                         productWishListArray.push(selectedProductItem);
                         localStorage.setItem("Product Wish Lists", JSON.stringify(productWishListArray));
                         window.location.reload();

@@ -16,6 +16,7 @@ export const productMiceData = [
         productPrice: "2,000.00",
         productRating: "5",
         productSold: "22",
+        productStocks: "15",
         productSpecs: {
             brandName: "Machenike",
             model: "M7 Pro",
@@ -39,6 +40,7 @@ export const productMiceData = [
         productPrice: "1,699.00",
         productRating: "5",
         productSold: "16",
+        productStocks: "22",
         productSpecs: {
             brandName: "Machenike",
             model: "M810",
@@ -62,6 +64,7 @@ export const productMiceData = [
         productPrice: "999.00",
         productRating: "5",
         productSold: "52",
+        productStocks: "31",
         productSpecs: {
             brandName: "Machenike",
             model: "M721",
@@ -85,6 +88,7 @@ export const productMiceData = [
         productPrice: "899.00",
         productRating: "5",
         productSold: "31",
+        productStocks: "4",
         productSpecs: {
             brandName: "Machenike",
             model: "M5",
@@ -108,6 +112,7 @@ export const productMiceData = [
         productPrice: "1,000.00",
         productRating: "5",
         productSold: "18",
+        productStocks: "3",
         productSpecs: {
             brandName: "Machenike",
             model: "M2",
@@ -131,6 +136,7 @@ export const productMiceData = [
         productPrice: "599.00",
         productRating: "5",
         productSold: "41",
+        productStocks: "51",
         productSpecs: {
             brandName: "Machenike",
             model: "CM3",
@@ -154,6 +160,7 @@ export const productMiceData = [
         productPrice: "999.00",
         productRating: "5",
         productSold: "44",
+        productStocks: "13",
         productSpecs: {
             brandName: "Machenike",
             model: "M610",
@@ -178,6 +185,7 @@ export const productMiceData = [
         productPrice: "2,200.00",
         productRating: "5",
         productSold: "35",
+        productStocks: "15",
         productSpecs: {
             brandName: "Machenike",
             model: "M830",
@@ -202,6 +210,7 @@ export const productMiceData = [
         productPrice: "1,400.00",
         productRating: "5",
         productSold: "24",
+        productStocks: "22",
         productSpecs: {
             brandName: "Machenike",
             model: "M700",

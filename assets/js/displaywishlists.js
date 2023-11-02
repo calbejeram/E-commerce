@@ -6,7 +6,7 @@ const productWishListsContainer = document.getElementById("productWishListsConta
 const wishLists = localStorage.getItem("Product Wish Lists") ? JSON.parse(localStorage.getItem("Product Wish Lists")) : []
 const wishListsCount = document.getElementById("wishListsCount");
 const wishListsTextCount = document.getElementById("wishListsTextCount");
-const deleteButton = document.getElementsByClassName("delete-button")
+const deleteButtons = document.getElementsByClassName("delete-button")
 wishListsCount.innerHTML = wishLists.length;
 wishListsTextCount.innerHTML = wishLists.length;
 
@@ -43,25 +43,27 @@ function renderProductItemsWishLists() {
             productWishListItemContainer.className = "col-12 col-lg-12";
     
             productWishListItemContainer.innerHTML = `
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-4 col-lg-2 p-2 d-flex align-items-center">
-                            <img src="${wishListItem.productImgUrl}" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-8 col-lg-10 d-flex align-items-center p-3">
-                            <div class="row">
-                                <div class="col-12 col-lg-8 d-flex flex-column align-items-start">
-                                    <h6 class="card-title fw-bold">${wishListItem.productName}</h6>
-                                    <p class="text-success fw-bold m-0">₱ ${wishListItem.productPrice}</p>
-                                </div>
-                                <div class="col-12 col-lg-4 d-flex align-items-center justify-content-end justify-content-lg-evenly">
-                                    <button class="btn btn-danger mx-1 delete-button"><i class="bi bi-trash3"></i></button>
-                                    <button class="btn btn-success mx-1"><i class="bi bi-cart-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
+
+            <table class="table align-middle ">
+                <tbody>
+                    <tr>
+                        <td style="width:200px">
+                            <img src="${wishListItem.productImgUrl}" class="img-fluid rounded-3" alt="...">
+                        </td>
+                        <td style="width:600px">
+                            <h6 class="card-title fw-bold">${wishListItem.productName}</h6>
+                        </td>
+                        <td style="width:200px">
+                            <p class="text-success fw-bold m-0">₱ ${wishListItem.productPrice}</p>
+                        </td>
+                        <td  style="width:200px">
+                            <span class="py-lg-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3-fill delete-button"></i></span>
+                            <span class="py-lg-2 px-lg-4" title="Add to Cart"><i class="bi bi-cart-plus-fill cart-button"></i></span> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
                 `
     
             productWishListsContainer.appendChild(productWishListItemContainer);
@@ -73,3 +75,50 @@ function renderProductItemsWishLists() {
 };
 
 renderProductItemsWishLists();
+
+
+function deleteItem(index) {
+    wishLists.splice(index, 1);
+
+    localStorage.setItem("Product Wish Lists", JSON.stringify(wishLists));
+
+    const productWishListItemContainers = document.getElementsByClassName("col-12 col-lg-12");
+    const itemToRemove = productWishListItemContainers[index];
+
+    itemToRemove.remove();
+
+    wishListsCount.innerHTML = wishLists.length;
+    wishListsTextCount.innerHTML = wishLists.length;
+    window.location.reload();
+}
+
+
+for (let i = 0; i < deleteButtons.length; i++) {
+    deleteButtons[i].addEventListener("click", function (event) {
+        const itemIndex = Array.from(deleteButtons).indexOf(event.target);
+        Swal.fire({
+            title: 'Remove from Wish Lists',
+            text: "You are removing this item from wish lists.",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Remove'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: 'Removed',
+                text: 'This is item has been removed from your wish lists.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+                });
+
+                if (itemIndex !== -1) {
+                    deleteItem(itemIndex);
+                };
+            };
+          });
+        
+    });
+}

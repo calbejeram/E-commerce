@@ -16,6 +16,7 @@ export const productMonitorData = [
         productPrice: "19,000.00",
         productRating: "5",
         productSold: "26",
+        productStocks: "13",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -43,6 +44,7 @@ export const productMonitorData = [
         productPrice: "28,499.00",
         productRating: "5",
         productSold: "29",
+        productStocks: "16",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -70,6 +72,7 @@ export const productMonitorData = [
         productPrice: "25,499.00",
         productRating: "5",
         productSold: "31",
+        productStocks: "21",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -97,6 +100,7 @@ export const productMonitorData = [
         productPrice: "8,499.00",
         productRating: "5",
         productSold: "18",
+        productStocks: "21",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -124,6 +128,7 @@ export const productMonitorData = [
         productPrice: "21,499.00",
         productRating: "5",
         productSold: "13",
+        productStocks: "2",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -151,6 +156,7 @@ export const productMonitorData = [
         productPrice: "9,999.00",
         productRating: "5",
         productSold: "25",
+        productStocks: "33",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -178,6 +184,7 @@ export const productMonitorData = [
         productPrice: "21,499.00",
         productRating: "5",
         productSold: "13",
+        productStocks: "14",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",
@@ -205,6 +212,7 @@ export const productMonitorData = [
         productPrice: "14,499.00",
         productRating: "5",
         productSold: "31",
+        productStocks: "21",
         productSpecs: {
             brandName: "Machenike",
             type: "Monitor",

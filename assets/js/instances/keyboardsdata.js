@@ -16,6 +16,7 @@ export const productKeyboardData = [
         productPrice: "2,500.00",
         productRating: "5",
         productSold: "23",
+        productStocks: "11",
         productSpecs: {
             brandName: "Machenike",
             model: "K7 Pro",
@@ -38,6 +39,7 @@ export const productKeyboardData = [
         productPrice: "1,800.00",
         productRating: "5",
         productSold: "31",
+        productStocks: "6",
         productSpecs: {
             brandName: "Machenike",
             model: "RGB",
@@ -62,6 +64,7 @@ export const productKeyboardData = [
         productPrice: "1,200.00",
         productRating: "5",
         productSold: "15",
+        productStocks: "41",
         productSpecs: {
             brandName: "Machenike",
             model: "K600",
@@ -84,6 +87,7 @@ export const productKeyboardData = [
         productPrice: "1,000.00",
         productRating: "5",
         productSold: "5",
+        productStocks: "31",
         productSpecs: {
             brandName: "Machenike",
             model: "K500F",
@@ -108,6 +112,7 @@ export const productKeyboardData = [
         productPrice: "1,999.00",
         productRating: "5",
         productSold: "27",
+        productStocks: "2",
         productSpecs: {
             brandName: "Machenike",
             model: "KT68 Pro",
@@ -133,6 +138,7 @@ export const productKeyboardData = [
         productPrice: "1,300.00",
         productRating: "5",
         productSold: "28",
+        productStocks: "18",
         productSpecs: {
             brandName: "Machenike",
             model: "KT68",

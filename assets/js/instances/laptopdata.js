@@ -16,6 +16,7 @@ export const productLaptopData = [
         productPrice: "65,000.00",
         productRating: "5",
         productSold: "15",
+        productStocks: "11",
         productSpecs: {
             brandName: "Machenike",
             type: "Laptop",
@@ -43,6 +44,7 @@ export const productLaptopData = [
         productPrice: "75,999.00",
         productRating: "5",
         productSold: "25",
+        productStocks: "23",
         productSpecs: {
             cpu: "R7-7735HS",
             gpu: "AMD Ryzen™ 7 7735HS",
@@ -70,6 +72,7 @@ export const productLaptopData = [
         productPrice: "49,000.00",
         productRating: "5",
         productSold: "41",
+        productStocks: "14",
         productSpecs: {
             cpu: "i5-12650H",
             gpu: "RTX 4050",
@@ -97,6 +100,7 @@ export const productLaptopData = [
         productPrice: "89,000.00",
         productRating: "5",
         productSold: "12",
+        productStocks: "21",
         productSpecs: {
             cpu: "i9-13900HX",
             gpu: "RTX 4090",
@@ -124,6 +128,7 @@ export const productLaptopData = [
         productPrice: "51,000.00",
         productRating: "5",
         productSold: "44",
+        productStocks: "41",
         productSpecs: {
             cpu: "i5-13500H",
             gpu: "RTX 4050",
@@ -151,6 +156,7 @@ export const productLaptopData = [
         productPrice: "70,000.00",
         productRating: "5",
         productSold: "9",
+        productStocks: "9",
         productSpecs: {
             cpu: "i9-12900H",
             gpu: "RTX 3060",
@@ -178,6 +184,7 @@ export const productLaptopData = [
         productPrice: "51,000.00",
         productRating: "5",
         productSold: "28",
+        productStocks: "6",
         productSpecs: {
             cpu: "i7-12700H",
             gpu: "RTX 3060",
@@ -205,6 +212,7 @@ export const productLaptopData = [
         productPrice: "46,500.00",
         productRating: "5",
         productSold: "19",
+        productStocks: "12",
         productSpecs: {
             cpu: "i7-12700H",
             gpu: "RTX 4050",
@@ -232,6 +240,7 @@ export const productLaptopData = [
         productPrice: "57,499.00",
         productRating: "5",
         productSold: "22",
+        productStocks: "13",
         productSpecs: {
             cpu: "i9-12900H",
             gpu: "RTX 3060",
@@ -259,6 +268,7 @@ export const productLaptopData = [
         productPrice: "49,000.00",
         productRating: "5",
         productSold: "15",
+        productStocks: "14",
         productSpecs: {
             cpu: "i7-1165G7",
             gpu: "RTX 4050",
@@ -286,6 +296,7 @@ export const productLaptopData = [
         productPrice: "63,000.00",
         productRating: "5",
         productSold: "20",
+        productStocks: "25",
         productSpecs: {
             cpu: "i9-12900H",
             gpu: "RTX 3080 Ti",
@@ -313,6 +324,7 @@ export const productLaptopData = [
         productPrice: "41,000.00",
         productRating: "4",
         productSold: "33",
+        productStocks: "28",
         productSpecs: {
             cpu: "i5-12650H",
             gpu: "RTX 4050",

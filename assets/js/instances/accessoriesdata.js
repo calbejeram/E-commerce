@@ -16,6 +16,7 @@ export const productAccessoriesData = [
         productPrice: "21,000.00",
         productRating: "5",
         productSold: "22",
+        productStocks: "15",
         productSpecs: {
             brandName: "Machenike",
             model: "G6",
@@ -37,6 +38,7 @@ export const productAccessoriesData = [
         productPrice: "18,000.00",
         productRating: "5",
         productSold: "21",
+        productStocks: "11",
         productSpecs: {
             brandName: "Machenike",
             model: "HG510W Pro",
@@ -58,6 +60,7 @@ export const productAccessoriesData = [
         productPrice: "21,000.00",
         productRating: "5",
         productSold: "31",
+        productStocks: "5",
         productSpecs: {
             brandName: "Machenike",
             model: "HG510W",
@@ -79,6 +82,7 @@ export const productAccessoriesData = [
         productPrice: "16,000.00",
         productRating: "5",
         productSold: "16",
+        productStocks: "31",
         productSpecs: {
             brandName: "Machenike",
             model: "HG503",
@@ -100,6 +104,7 @@ export const productAccessoriesData = [
         productPrice: "18,999.00",
         productRating: "5",
         productSold: "27",
+        productStocks: "75",
         productSpecs: {
             brandName: "Machenike",
             model: "HG300",
@@ -121,6 +126,7 @@ export const productAccessoriesData = [
         productPrice: "17,500.00",
         productRating: "5",
         productSold: "28",
+        productStocks: "2",
         productSpecs: {
             brandName: "Machenike",
             model: "G6",
@@ -142,6 +148,7 @@ export const productAccessoriesData = [
         productPrice: "17,999.00",
         productRating: "5",
         productSold: "38",
+        productStocks: "31",
         productSpecs: {
             brandName: "Machenike",
             model: "H300",
@@ -164,6 +171,7 @@ export const productAccessoriesData = [
         productPrice: "16,899.00",
         productRating: "5",
         productSold: "35",
+        productStocks: "9",
         productSpecs: {
             brandName: "Machenike",
             model: "GH603",
