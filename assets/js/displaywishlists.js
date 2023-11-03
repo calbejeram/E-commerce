@@ -1,5 +1,11 @@
 import { cartCount } from "./functions/cartCount.js";
 import { wishListCount } from "./functions/wishListCount.js";
+import { productLaptopData } from "./instances/laptopdata.js";
+import { productAccessoriesData } from "./instances/accessoriesdata.js";
+import { productDesktopsData } from "./instances/desktopdata.js";
+import { productKeyboardData } from "./instances/keyboardsdata.js";
+import { productMiceData } from "./instances/micedata.js";
+import { productMonitorData } from "./instances/monitordata.js";
 
 // VARIABLES
 const productWishListsContainer = document.getElementById("productWishListsContainer");
@@ -7,8 +13,18 @@ const wishLists = localStorage.getItem("Product Wish Lists") ? JSON.parse(localS
 const wishListsCount = document.getElementById("wishListsCount");
 const wishListsTextCount = document.getElementById("wishListsTextCount");
 const deleteButtons = document.getElementsByClassName("delete-button")
+const cartButtons = document.getElementsByClassName("cart-button")
 wishListsCount.innerHTML = wishLists.length;
 wishListsTextCount.innerHTML = wishLists.length;
+
+const dataSet = [
+    productLaptopData,
+    productAccessoriesData,
+    productDesktopsData,
+    productKeyboardData,
+    productMiceData,
+    productMonitorData
+]
 
 // Wish List Count
 wishListCount();
@@ -43,35 +59,33 @@ function renderProductItemsWishLists() {
             productWishListItemContainer.className = "col-12 col-lg-12";
     
             productWishListItemContainer.innerHTML = `
-            
-
-            <table class="table align-middle ">
-                <tbody>
-                    <tr>
-                        <td style="width:200px">
+                <div class="card mb-3">
+                    <div class="row p-1 p-lg-3">
+                        <div class="col-4 col-lg-2 d-flex align-items-center">
                             <img src="${wishListItem.productImgUrl}" class="img-fluid rounded-3" alt="...">
-                        </td>
-                        <td style="width:600px">
-                            <h6 class="card-title fw-bold">${wishListItem.productName}</h6>
-                        </td>
-                        <td style="width:200px">
-                            <p class="text-success fw-bold m-0">₱ ${wishListItem.productPrice}</p>
-                        </td>
-                        <td  style="width:200px">
-                            <span class="py-lg-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3-fill delete-button"></i></span>
-                            <span class="py-lg-2 px-lg-4" title="Add to Cart"><i class="bi bi-cart-plus-fill cart-button"></i></span> 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                        <div class="col-8 col-lg-10 d-flex align-items-center p-3">
+                            <div class="row w-100">
+                                <div class="col-12 col-lg-6 d-flex flex-column align-items-start">
+                                    <h6 class="card-title fw-bold">${wishListItem.productName}</h6>
+                                    <p class="text-danger m-0 small">Items Remaining: <span class="fw-bold">${wishListItem.productStocks}</span></p>
+                                </div>
+                                <div class="col-12 col-lg-3 d-flex flex-column align-items-start">
+                                    <p class="text-success fw-bold m-0">₱ ${wishListItem.productPrice}</p>
+                                </div>
+                                <div class="col-12 col-lg-3 d-flex align-items-center justify-content-start p-0">
+                                    <span class="py-2 px-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3-fill delete-button"></i></span>
+                                    <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-cart-plus-fill cart-button"></i></span>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 `
     
             productWishListsContainer.appendChild(productWishListItemContainer);
         };
     };
-
-    
-    
 };
 
 renderProductItemsWishLists();
@@ -121,4 +135,145 @@ for (let i = 0; i < deleteButtons.length; i++) {
           });
         
     });
-}
+};
+
+// for (let i = 0; i < cartButtons.length; i++) {
+//     cartButtons[i].addEventListener("click", () => {
+//         const productId = cartButtons[i].id;
+//         const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+//         const selectedProductItem = dataSet[i].find(item => item.productId == productId);
+//         let isAlreadyInCart = false;
+
+    
+//         for (let j = 0; j < productCartListArray.length; j++) {
+//             if (productCartListArray[j].productId.toString() === productId.toString()) {
+//                 isAlreadyInCart = true;
+//                 break;
+//             };
+//         };
+
+//         if (isAlreadyInCart) {
+//             Swal.fire({
+//                 title: 'Already in Cart',
+//                 text: 'This item is already added to your cart.',
+//                 icon: 'error',
+//                 confirmButtonColor: '#3085d6',
+//                 confirmButtonText: 'OK'
+//             });
+//         } else {
+//             Swal.fire({
+//                 title: 'Add to Cart?',
+//                 text: "Are you sure to add this item to your cart?",
+//                 iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
+//                 showCancelButton: true,
+//                 confirmButtonColor: '#3085d6',
+//                 cancelButtonColor: '#d33',
+//                 confirmButtonText: 'Yes, add this item.'
+//               }).then((result) => {
+//                 if (result.isConfirmed) {
+//                   Swal.fire({
+//                     title: 'Added to your cart.',
+//                     text: 'This item is successfully added to your cart.',
+//                     icon: 'success',
+//                     showConfirmButton: false,
+//                     timer: 1500
+//                     });
+
+//                     productCartListArray.push(selectedProductItem);
+//                     localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
+//                     window.location.reload();
+//                 };
+//               });
+//         }
+//     });
+// };
+
+// for (let i = 0; i < cartButtons.length; i++) {
+//     const productId = cartButtons[i].id;
+//     const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+    
+//     let isAlreadyInCart = false;
+
+//     for (let j = 0; j < productCartListArray.length; j++) {
+//         if (productCartListArray[j].productId.toString() === productId.toString()) {
+//             isAlreadyInCart = true;
+//             break;
+//         }
+//     }
+
+//     if (isAlreadyInCart) {
+//         cartButtons[i].className = "bi bi-cart-check-fill cart-button"
+//     } else {
+//         cartButtons[i].className = "bi bi-cart-plus cart-button"
+//     }
+// };
+
+for (let i = 0; i < cartButtons.length; i++) {  
+    cartButtons[i].addEventListener("click", () => {
+
+        const productId = cartButtons[i].id;
+        const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+        let selectedProductItems = null;
+
+        dataSet.forEach(item => {
+            const selectedProductItem = item.find(laptop => laptop.productId == productId);
+            // console.log(selectedProductItem)
+            let selectedProductItems = selectedProductItem;
+        })
+        console.log(selectedProductItems)
+        
+        
+        
+        if (productCartListArray.some(item => item.productId === selectedProductItem.productId)) {
+            Swal.fire({
+                title: 'Already in Cart',
+                text: "This item is already added in your cart.",
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Remove this item from cart'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Removed',
+                    text: 'This is item has been removed from your cart.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                    const indexToRemove = productCartListArray.findIndex(item => item.productId == productId);
+                    if (indexToRemove !== -1) {
+                        productCartListArray.splice(indexToRemove, 1);
+                    }
+
+                    localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
+                    window.location.reload();
+                };
+              });
+        } else {
+            Swal.fire({
+                title: 'Add to Cart?',
+                text: "Are you sure to add this item to your cart?",
+                iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, add this item.'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Added to your cart.',
+                    text: 'This item is successfully added to your cart.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+
+                    productCartListArray.push(selectedProductItem);
+                    localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
+                    window.location.reload();
+                };
+              });
+
+            };
+    });
+};
