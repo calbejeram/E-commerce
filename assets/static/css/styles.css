@@ -9,6 +9,11 @@
     font-size: 1.3rem;
 }
 
+.wishlist-button {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
 .cart-button {
     color: green;
     cursor: pointer;

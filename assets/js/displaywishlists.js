@@ -18,13 +18,13 @@ wishListsCount.innerHTML = wishLists.length;
 wishListsTextCount.innerHTML = wishLists.length;
 
 const dataSet = [
-    productLaptopData,
-    productAccessoriesData,
-    productDesktopsData,
-    productKeyboardData,
-    productMiceData,
-    productMonitorData
-]
+    ...productLaptopData,
+    ...productAccessoriesData,
+    ...productDesktopsData,
+    ...productKeyboardData,
+    ...productMiceData,
+    ...productMonitorData
+];
 
 // Wish List Count
 wishListCount();
@@ -74,7 +74,7 @@ function renderProductItemsWishLists() {
                                     <p class="text-success fw-bold m-0">₱ ${wishListItem.productPrice}</p>
                                 </div>
                                 <div class="col-12 col-lg-3 d-flex align-items-center justify-content-start p-0">
-                                    <span class="py-2 px-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3-fill delete-button"></i></span>
+                                    <span class="py-2 px-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3 delete-button"></i></span>
                                     <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-cart-plus-fill cart-button"></i></span>    
                                 </div>
                             </div>
@@ -137,92 +137,12 @@ for (let i = 0; i < deleteButtons.length; i++) {
     });
 };
 
-// for (let i = 0; i < cartButtons.length; i++) {
-//     cartButtons[i].addEventListener("click", () => {
-//         const productId = cartButtons[i].id;
-//         const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
-//         const selectedProductItem = dataSet[i].find(item => item.productId == productId);
-//         let isAlreadyInCart = false;
-
-    
-//         for (let j = 0; j < productCartListArray.length; j++) {
-//             if (productCartListArray[j].productId.toString() === productId.toString()) {
-//                 isAlreadyInCart = true;
-//                 break;
-//             };
-//         };
-
-//         if (isAlreadyInCart) {
-//             Swal.fire({
-//                 title: 'Already in Cart',
-//                 text: 'This item is already added to your cart.',
-//                 icon: 'error',
-//                 confirmButtonColor: '#3085d6',
-//                 confirmButtonText: 'OK'
-//             });
-//         } else {
-//             Swal.fire({
-//                 title: 'Add to Cart?',
-//                 text: "Are you sure to add this item to your cart?",
-//                 iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
-//                 showCancelButton: true,
-//                 confirmButtonColor: '#3085d6',
-//                 cancelButtonColor: '#d33',
-//                 confirmButtonText: 'Yes, add this item.'
-//               }).then((result) => {
-//                 if (result.isConfirmed) {
-//                   Swal.fire({
-//                     title: 'Added to your cart.',
-//                     text: 'This item is successfully added to your cart.',
-//                     icon: 'success',
-//                     showConfirmButton: false,
-//                     timer: 1500
-//                     });
-
-//                     productCartListArray.push(selectedProductItem);
-//                     localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
-//                     window.location.reload();
-//                 };
-//               });
-//         }
-//     });
-// };
-
-// for (let i = 0; i < cartButtons.length; i++) {
-//     const productId = cartButtons[i].id;
-//     const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
-    
-//     let isAlreadyInCart = false;
-
-//     for (let j = 0; j < productCartListArray.length; j++) {
-//         if (productCartListArray[j].productId.toString() === productId.toString()) {
-//             isAlreadyInCart = true;
-//             break;
-//         }
-//     }
-
-//     if (isAlreadyInCart) {
-//         cartButtons[i].className = "bi bi-cart-check-fill cart-button"
-//     } else {
-//         cartButtons[i].className = "bi bi-cart-plus cart-button"
-//     }
-// };
-
 for (let i = 0; i < cartButtons.length; i++) {  
     cartButtons[i].addEventListener("click", () => {
 
         const productId = cartButtons[i].id;
+        const selectedProductItem = dataSet.find(item => item.productId == productId);
         const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
-        let selectedProductItems = null;
-
-        dataSet.forEach(item => {
-            const selectedProductItem = item.find(laptop => laptop.productId == productId);
-            // console.log(selectedProductItem)
-            let selectedProductItems = selectedProductItem;
-        })
-        console.log(selectedProductItems)
-        
-        
         
         if (productCartListArray.some(item => item.productId === selectedProductItem.productId)) {
             Swal.fire({
@@ -277,3 +197,19 @@ for (let i = 0; i < cartButtons.length; i++) {
             };
     });
 };
+
+function addedToCart(cartButtons, productData) {
+    for (let i = 0; i < cartButtons.length; i++) {
+        const productId = cartButtons[i].id;
+        const selectedProductItem = productData.find(laptop => laptop.productId == productId);
+        const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+    
+        if (productCartListArray.some(item => item.productId === selectedProductItem.productId)) {
+            cartButtons[i].className = "bi bi-cart-check-fill text-success cart-button";
+        } else {
+            cartButtons[i].className = "bi bi-cart-plus cart-button";
+        };
+    };
+};
+
+addedToCart(cartButtons, dataSet);
