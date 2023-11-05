@@ -6,6 +6,7 @@ import { productDesktopsData } from "./instances/desktopdata.js";
 import { productKeyboardData } from "./instances/keyboardsdata.js";
 import { productMiceData } from "./instances/micedata.js";
 import { productMonitorData } from "./instances/monitordata.js";
+import { quantity } from "./functions/quantity.js";
 
 // VARIABLES
 const productWishListsContainer = document.getElementById("productWishListsContainer");
@@ -13,7 +14,9 @@ const wishLists = localStorage.getItem("Product Wish Lists") ? JSON.parse(localS
 const wishListsCount = document.getElementById("wishListsCount");
 const wishListsTextCount = document.getElementById("wishListsTextCount");
 const deleteButtons = document.getElementsByClassName("delete-button")
-const cartButtons = document.getElementsByClassName("cart-button")
+const cartButtons = document.getElementsByClassName("cart-button");
+const viewDetailsModal = document.getElementsByClassName("view-details-modal");
+const sort = document.querySelectorAll("#priceLowToHigh, #priceHighToLow");
 wishListsCount.innerHTML = wishLists.length;
 wishListsTextCount.innerHTML = wishLists.length;
 
@@ -75,8 +78,33 @@ function renderProductItemsWishLists() {
                                 </div>
                                 <div class="col-12 col-lg-3 d-flex align-items-center justify-content-start p-0">
                                     <span class="py-2 px-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3 delete-button"></i></span>
-                                    <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-cart-plus-fill cart-button"></i></span>    
+                                    <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-cart-plus-fill cart-button"></i></span>
+                                    <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-eye-fill view-details-modal" data-bs-toggle="modal" data-bs-target="#productDetailsModal"></i></span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="productDetailsModal">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalProductTitle"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="modalBody" class="modal-body">
+        
+                            </div>
+                            <div class="modal-footer">
+                                <p>Quantity: </p>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button id="minusButton" type="button" class="btn btn-success w-25"><i class="bi bi-dash"></i></button>
+                                    <span class="px-3 py-2 text-center" id="quantity"></span>
+                                    <button id="addButton" type="button" class="btn btn-success w-25"><i class="bi bi-plus"></i></button>
+                                </div>
+                                <button class="btn btn-success w-25">Buy</button>
                             </div>
                         </div>
                     </div>
@@ -91,112 +119,120 @@ function renderProductItemsWishLists() {
 renderProductItemsWishLists();
 
 
-function deleteItem(index) {
-    wishLists.splice(index, 1);
-
-    localStorage.setItem("Product Wish Lists", JSON.stringify(wishLists));
-
-    const productWishListItemContainers = document.getElementsByClassName("col-12 col-lg-12");
-    const itemToRemove = productWishListItemContainers[index];
-
-    itemToRemove.remove();
-
-    wishListsCount.innerHTML = wishLists.length;
-    wishListsTextCount.innerHTML = wishLists.length;
-    window.location.reload();
-}
-
-
-for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener("click", function (event) {
-        const itemIndex = Array.from(deleteButtons).indexOf(event.target);
-        Swal.fire({
-            title: 'Remove from Wish Lists',
-            text: "You are removing this item from wish lists.",
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Remove'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: 'Removed',
-                text: 'This is item has been removed from your wish lists.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-                });
-
-                if (itemIndex !== -1) {
-                    deleteItem(itemIndex);
-                };
-            };
-          });
-        
-    });
-};
-
-for (let i = 0; i < cartButtons.length; i++) {  
-    cartButtons[i].addEventListener("click", () => {
-
-        const productId = cartButtons[i].id;
-        const selectedProductItem = dataSet.find(item => item.productId == productId);
-        const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
-        
-        if (productCartListArray.some(item => item.productId === selectedProductItem.productId)) {
+function deleleItemWishList() {
+    function deleteItem(index) {
+        wishLists.splice(index, 1);
+    
+        localStorage.setItem("Product Wish Lists", JSON.stringify(wishLists));
+    
+        const productWishListItemContainers = document.getElementsByClassName("col-12 col-lg-12");
+        const itemToRemove = productWishListItemContainers[index];
+    
+        itemToRemove.remove();
+    
+        wishListsCount.innerHTML = wishLists.length;
+        wishListsTextCount.innerHTML = wishLists.length;
+        window.location.reload();
+    }
+    
+    
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener("click", function (event) {
+            const itemIndex = Array.from(deleteButtons).indexOf(event.target);
             Swal.fire({
-                title: 'Already in Cart',
-                text: "This item is already added in your cart.",
-                icon: 'error',
+                title: 'Remove from Wish Lists',
+                text: "You are removing this item from wish lists.",
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Remove this item from cart'
+                confirmButtonText: 'Remove'
               }).then((result) => {
                 if (result.isConfirmed) {
                   Swal.fire({
                     title: 'Removed',
-                    text: 'This is item has been removed from your cart.',
+                    text: 'This is item has been removed from your wish lists.',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                     });
-                    const indexToRemove = productCartListArray.findIndex(item => item.productId == productId);
-                    if (indexToRemove !== -1) {
-                        productCartListArray.splice(indexToRemove, 1);
-                    }
-
-                    localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
-                    window.location.reload();
+    
+                    if (itemIndex !== -1) {
+                        deleteItem(itemIndex);
+                    };
                 };
               });
-        } else {
-            Swal.fire({
-                title: 'Add to Cart?',
-                text: "Are you sure to add this item to your cart?",
-                iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, add this item.'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: 'Added to your cart.',
-                    text: 'This item is successfully added to your cart.',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-
-                    productCartListArray.push(selectedProductItem);
-                    localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
-                    window.location.reload();
-                };
-              });
-
-            };
-    });
+            
+        });
+    };
 };
+
+deleleItemWishList();
+
+function addingItemToCart() {
+    for (let i = 0; i < cartButtons.length; i++) {  
+        cartButtons[i].addEventListener("click", () => {
+    
+            const productId = cartButtons[i].id;
+            const selectedProductItem = dataSet.find(item => item.productId == productId);
+            const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+            
+            if (productCartListArray.some(item => item.productId === selectedProductItem.productId)) {
+                Swal.fire({
+                    title: 'Already in Cart',
+                    text: "This item is already added in your cart.",
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Remove this item from cart'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Removed',
+                        text: 'This is item has been removed from your cart.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+                        const indexToRemove = productCartListArray.findIndex(item => item.productId == productId);
+                        if (indexToRemove !== -1) {
+                            productCartListArray.splice(indexToRemove, 1);
+                        }
+    
+                        localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
+                        window.location.reload();
+                    };
+                  });
+            } else {
+                Swal.fire({
+                    title: 'Add to Cart?',
+                    text: "Are you sure to add this item to your cart?",
+                    iconHtml: '<i class="bi bi-cart-fill text-success"></i>',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, add this item.'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: 'Added to your cart.',
+                        text: 'This item is successfully added to your cart.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
+    
+                        productCartListArray.push(selectedProductItem);
+                        localStorage.setItem("Product Cart Lists", JSON.stringify(productCartListArray));
+                        window.location.reload();
+                    };
+                  });
+    
+                };
+        });
+    };
+};
+
+addingItemToCart()
 
 function addedToCart(cartButtons, productData) {
     for (let i = 0; i < cartButtons.length; i++) {
@@ -213,3 +249,120 @@ function addedToCart(cartButtons, productData) {
 };
 
 addedToCart(cartButtons, dataSet);
+
+
+
+
+function productSorting(productData, productContainer) {
+    const setActive = (id) => {
+        sort.forEach(item => {
+            item === id ? item.classList.add("active") : item.classList.remove("active");
+        });
+    };
+    
+    sort.forEach(item => {
+        item.addEventListener("click", () => {
+            setActive(item);
+            if (item.innerHTML === "Price Low to High") {
+                productContainer.innerHTML = "";
+                productData.sort((a, b) => parseFloat(a.productPrice.replace(/,/g, '')) - parseFloat(b.productPrice.replace(/,/g, '')));
+                renderProductItemsWishLists();
+                deleleItemWishList();
+                addedToCart(cartButtons, dataSet);
+                addingItemToCart();
+                quantity();
+                renderProductDetailsModal(viewDetailsModal, wishLists);
+                
+            } else {
+                productContainer.innerHTML = "";
+                productData.sort((a, b) => parseFloat(b.productPrice.replace(/,/g, '')) - parseFloat(a.productPrice.replace(/,/g, '')));
+                renderProductItemsWishLists();
+                deleleItemWishList();
+                addedToCart(cartButtons, dataSet);
+                addingItemToCart();
+                quantity();
+                renderProductDetailsModal(viewDetailsModal, wishLists);
+            }
+        });
+    });
+};
+
+productSorting(wishLists, productWishListsContainer);
+
+
+function renderProductDetailsModal(viewDetails, productData) {
+    for (let i = 0; i < viewDetails.length; i++) {
+        viewDetails[i].addEventListener("click", () => {
+            const productId = viewDetails[i].id;
+            const selectedProductItem = productData.find(item => item.productId == productId);
+    
+            const modalTitle = document.getElementById("modalProductTitle");
+            const modalBody = document.getElementById("modalBody");
+
+            modalTitle.innerHTML = selectedProductItem.productName;
+            modalBody.innerHTML = `
+            <div id="carouselLaptopIndicators" class="carousel slide">
+                <div id="carouselInner" class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="${selectedProductItem.productImgUrl}" class="img-fluid" alt="${selectedProductItem.productName}">
+                    </div>
+                </div>
+                <div id="carouselIndicators" class="carousel-indicators position-relative m-0">
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="height: 80px; width: 80px; background: url('${selectedProductItem.productImgUrl}') no-repeat center center/cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="1" aria-label="Slide 2"style="height: 80px; width: 80px; background: url('${selectedProductItem.productImagesUrl.image1}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="height: 80px; width: 80px; background: url('${selectedProductItem.productImagesUrl.image2}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="3" aria-label="Slide 4" style="height: 80px; width: 80px; background: url('${selectedProductItem.productImagesUrl.image3}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="4" aria-label="Slide 5" style="height: 80px; width: 80px; background: url('${selectedProductItem.productImagesUrl.image4}') no-repeat center center/ cover;"></button>
+                    <button type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide-to="5" aria-label="Slide 6" style="height: 80px; width: 80px; background: url('${selectedProductItem.productImagesUrl.image5}') no-repeat center center/ cover;"></button>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselLaptopIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+    
+            <hr>
+
+            <div id="productDescriptions" class="col-12 col-lg-12">
+                <h3>${selectedProductItem.productName}</h3>
+                <h3 class="text-success fw-bold">₱ ${selectedProductItem.productPrice}</h3>
+                <p>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </p>
+                <h4><i class="bi bi-list-task me-2"></i>Descriptions</h4>
+                <h6>Quick Specs</h6>
+            </div>
+            `
+
+            const productDescriptions = document.getElementById("productDescriptions");
+            const productSpecs = document.createElement("ul");
+            const carouselInner = document.getElementById("carouselInner");
+
+            for (const specs in selectedProductItem.productSpecs) {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<li>${specs[0].toUpperCase() + specs.substring(1)}: <span class="fw-bold text-primary">${selectedProductItem.productSpecs[specs]}</span></li>`;
+                productSpecs.appendChild(listItem);
+            };
+
+            for (const img in selectedProductItem.productImagesUrl) {
+                const carouselDiv = document.createElement("div");
+                carouselDiv.className = "carousel-item";
+                carouselDiv.innerHTML = `<img src="${selectedProductItem.productImagesUrl[img]}" class="img-fluid" alt="${selectedProductItem.productName}">`;
+                carouselInner.appendChild(carouselDiv);
+            };
+            
+            productDescriptions.appendChild(productSpecs);
+        });
+    };
+};
+
+renderProductDetailsModal(viewDetailsModal, wishLists);
+quantity();
