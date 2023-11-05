@@ -79,7 +79,7 @@ function renderProductItemsWishLists() {
                                 <div class="col-12 col-lg-3 d-flex align-items-center justify-content-start p-0">
                                     <span class="py-2 px-2 px-lg-4" title="Remove to Wish Lists"><i class="bi bi-trash3 delete-button"></i></span>
                                     <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-cart-plus-fill cart-button"></i></span>
-                                    <span class="py-2 px-2 px-lg-4" title="Add to Cart"><i id="${wishListItem.productId}" class="bi bi-eye-fill view-details-modal" data-bs-toggle="modal" data-bs-target="#productDetailsModal"></i></span>
+                                    <span class="py-2 px-2 px-lg-4" title="View Details"><i id="${wishListItem.productId}" class="bi bi-eye-fill view-details-modal" data-bs-toggle="modal" data-bs-target="#productDetailsModal"></i></span>
                                 </div>
                             </div>
                         </div>

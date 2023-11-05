@@ -71,10 +71,10 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link navbar-link" href="#">About Us</a>
+                    <a class="nav-link navbar-link" href="/assets/pages/aboutus.html">About Us</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link navbar-link" href="#">Contact Us</a>
+                    <a class="nav-link navbar-link" href="/assets/pages/contactus.html">Contact Us</a>
                   </li>
                   <!-- Mobile -->
                   <div class="shop d-block d-lg-none mb-2 mb-lg-0">
@@ -159,7 +159,6 @@
                     Sort By:
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item btn" id="dateAdded">Date Added</a></li>
                     <li><a class="dropdown-item btn" id="priceLowToHigh">Price Low to High</a></li>
                     <li><a class="dropdown-item btn" id="priceHighToLow">Price High to Low</a></li>
                   </ul>
@@ -178,9 +177,30 @@
                   </div>
               </div>
               <div class="col-12 col-lg-4">
-                  <div id="productCartListsContainer" class="row mb-lg-3">
-                    <!-- Cart Lists Container -->
+                <!-- Product Order Summary Container -->
+                <div class="card">
+                  <div class="card-header">
+                    Order Summary
                   </div>
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Product Order Summary</h5>
+                    <div class="product-subtotal d-flex align-items-center justify-content-between">
+                      <p>Subtotal (0 items)</p>
+                      <p>₱ 0.00</p>
+                    </div>
+                    <div class="product-shipping-fee d-flex align-items-center justify-content-between">
+                      <p>Shipping Fee</p>
+                      <p>₱ 0.00</p>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="subtotal d-flex align-items-center justify-content-between">
+                      <p class="card-text fw-bold">Sub Total: </p>
+                      <p class="card-text fw-bold">₱ 0.00</p>
+                    </div>
+                    <a href="#" class="btn btn-success w-100">Proceed to Checkout</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

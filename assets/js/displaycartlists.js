@@ -16,6 +16,7 @@ const cartListsCount = document.getElementById("cartListsCount");
 const cartListsTextCount = document.getElementById("cartListsTextCount");
 const wishListButtons = document.getElementsByClassName("wishlist-button");
 const deleteButtons = document.getElementsByClassName("delete-button");
+const checkBoxButtons = document.getElementsByClassName("cart-checkbox");
 cartListsCount.innerHTML = cartLists.length;
 cartListsTextCount.innerHTML = cartLists.length;
 
@@ -64,8 +65,8 @@ function renderProductItemsWishLists() {
                 <div class="card mb-3">
                     <div class="row p-1 p-lg-3">
                         <div class="col-2 col-lg-1 d-flex align-items-center justify-content-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <div class="form-check ">
+                                <input class="form-check-input cart-checkbox" type="checkbox" value="" id="${cartListItem.productId}">
                             </div>
                         </div>
                         <div class="col-4 col-lg-2 d-flex align-items-center">
@@ -98,57 +99,64 @@ function renderProductItemsWishLists() {
                 `
     
             productCartListsContainer.appendChild(productCartListItemContainer);
+            quantity();
         };
     };
 };
 
+quantity();
+
 renderProductItemsWishLists();
 
-function deleteItem(index) {
-    cartLists.splice(index, 1);
-
-    localStorage.setItem("Product Cart Lists", JSON.stringify(cartLists));
-
-    const productCartListItemContainer = document.getElementsByClassName("col-12 col-lg-12");
-    const itemToRemove = productCartListItemContainer[index];
-
-    itemToRemove.remove();
-
-    cartListsCount.innerHTML = cartLists.length;
-    cartListsTextCount.innerHTML = cartLists.length;
-    window.location.reload();
-}
-
-
-for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener("click", function (event) {
-        const itemIndex = Array.from(deleteButtons).indexOf(event.target);
-        Swal.fire({
-            title: 'Remove from Cart Lists',
-            text: "You are removing this item from cart lists.",
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Remove'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: 'Removed',
-                text: 'This is item has been removed from your cart lists.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-                });
-
-                if (itemIndex !== -1) {
-                    deleteItem(itemIndex);
+function deleteItemCartList() {
+    function deleteItem(index) {
+        cartLists.splice(index, 1);
+    
+        localStorage.setItem("Product Cart Lists", JSON.stringify(cartLists));
+    
+        const productCartListItemContainer = document.getElementsByClassName("col-12 col-lg-12");
+        const itemToRemove = productCartListItemContainer[index];
+    
+        itemToRemove.remove();
+    
+        cartListsCount.innerHTML = cartLists.length;
+        cartListsTextCount.innerHTML = cartLists.length;
+        window.location.reload();
+    }
+    
+    
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener("click", function (event) {
+            const itemIndex = Array.from(deleteButtons).indexOf(event.target);
+            Swal.fire({
+                title: 'Remove from Cart Lists',
+                text: "You are removing this item from cart lists.",
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Remove'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: 'Removed',
+                    text: 'This is item has been removed from your cart lists.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+    
+                    if (itemIndex !== -1) {
+                        deleteItem(itemIndex);
+                    };
                 };
-            };
-          });
-        
-    });
+              });
+            
+        });
+    };
 };
+
+deleteItemCartList();
 
 
 addProductToWishList(wishListButtons, dataSet);
@@ -168,4 +176,37 @@ function addedToWishList(wishListButtons, productData) {
 };
 
 addedToWishList(wishListButtons, dataSet);
-quantity();
+
+
+
+let subtotal = 0;  // Initialize subtotal outside the loop
+
+for (let i = 0; i < checkBoxButtons.length; i++) {
+  checkBoxButtons[i].addEventListener("click", () => {
+    const checkbox = checkBoxButtons[i];
+    const productId = checkBoxButtons[i].id;
+    checkbox.setAttribute("checked", "checked");
+
+    const productCartListArray = JSON.parse(localStorage.getItem("Product Cart Lists")) || [];
+    const selectedProductItem = productCartListArray.find(item => item.productId == productId);
+
+    if (checkbox.checked) {
+      console.log(true);
+      subtotal = subtotal + parseInt(selectedProductItem.productPrice);  // Accumulate the prices
+      console.log(subtotal);
+      quantity();
+      console.log(quantity())
+    } else {
+      console.log(false);
+      subtotal = subtotal - parseInt(selectedProductItem.productPrice);  // Accumulate the prices
+      console.log(subtotal);
+    }
+  });
+}
+
+
+
+
+
+
+  

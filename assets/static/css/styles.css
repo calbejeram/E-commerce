@@ -120,10 +120,7 @@
     position: fixed;
     top: 90%;
     right: 4%;
-    background-color: #74EBD5 !important;
-    background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%) !important;
     border: 0;
-    color: black;
 }
 
 .pre-loader {
@@ -313,8 +310,8 @@
 /* FOOTER */
 #footer {
     /* background-color: rgb(199, 199, 199); */
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-color: #74EBD5 !important;
+    background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%) !important;
 
 }
 
