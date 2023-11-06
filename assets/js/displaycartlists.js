@@ -104,7 +104,7 @@ function renderProductItemsWishLists() {
     };
 };
 
-quantity();
+// quantity();
 
 renderProductItemsWishLists();
 

@@ -365,4 +365,4 @@ function renderProductDetailsModal(viewDetails, productData) {
 };
 
 renderProductDetailsModal(viewDetailsModal, wishLists);
-quantity();
+// quantity();
