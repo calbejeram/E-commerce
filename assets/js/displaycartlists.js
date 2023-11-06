@@ -180,6 +180,7 @@ addedToWishList(wishListButtons, dataSet);
 
 
 let subtotal = 0;  // Initialize subtotal outside the loop
+let productQuantity = 0;
 
 for (let i = 0; i < checkBoxButtons.length; i++) {
   checkBoxButtons[i].addEventListener("click", () => {
@@ -194,8 +195,6 @@ for (let i = 0; i < checkBoxButtons.length; i++) {
       console.log(true);
       subtotal = subtotal + parseInt(selectedProductItem.productPrice);  // Accumulate the prices
       console.log(subtotal);
-      quantity();
-      console.log(quantity())
     } else {
       console.log(false);
       subtotal = subtotal - parseInt(selectedProductItem.productPrice);  // Accumulate the prices
