@@ -6,11 +6,11 @@ export const productLaptopData = [
         productId: 1,
         productImgUrl: "https://global.machenike.com/cdn/shop/files/1-0325.jpg?v=1697609403",
         productImagesUrl: {
-            image1: "https://global.machenike.com/cdn/shop/files/2-0325.jpg?v=1697609402",
-            image2: "https://global.machenike.com/cdn/shop/files/5-0325.jpg?v=1697609404",
-            image3: "https://global.machenike.com/cdn/shop/files/8-0325.jpg?v=1697609404",
-            image4: "https://global.machenike.com/cdn/shop/files/9-0325.jpg?v=1697609403",
-            image5: "https://global.machenike.com/cdn/shop/files/10-0325.jpg?v=1697609403"
+            image1: "https://global.machenike.com/cdn/shop/files/AMD-_-16-_-4.jpg?v=1699242720",
+            image2: "https://global.machenike.com/cdn/shop/files/lQDPJxWB7ci-CXTNAyDNAyCwRezqJlrdB-EFOk41Cw2qAA_800_800.jpg?v=1699242720",
+            image3: "https://global.machenike.com/cdn/shop/files/lQDPJxXc4Nk4SXTNAyDNAyCwH6p4qhd-G1sFOk41Cw2qAQ_800_800.jpg?v=1699242720",
+            image4: "https://global.machenike.com/cdn/shop/files/lQDPJxdIrRshSXTNA-jNA-iwfbHVflV2hXsFOk41C3nUAA_1000_1000_750x.jpg?v=1699242705",
+            image5: "https://global.machenike.com/cdn/shop/files/lQLPJxCRuzCBKXTNA-jNA-iw5A-C22_qttYFOk41C3nUAQ_1000_1000_750x.png?v=1699242720"
         },
         productName: "Machenike L16 Gen 13 Intel (16”) Gaming Laptop",
         productPrice: "65,000.00",
